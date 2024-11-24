@@ -49,7 +49,18 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			background_light_mode: "#F5F5F5",
+			background_dark_mode: "#101720",
+			primary_color: "#B9FF66",
+			secondary_color: "#F9B800",
+			ascend_color: "#60935D",
+			text_color_light: "#333333",
+			text_color_desc_light: "#939393",
+			text_color_dark: "#FFFFFF",
+			text_color_desc_dark: "#A4B1CD",
+			link_color: "#0000EE",
+			custom_red: "#EA4335",
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
