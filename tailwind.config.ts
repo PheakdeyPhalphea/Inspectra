@@ -68,11 +68,6 @@ const config: Config = {
 			'text_title_24': ['24px', '36px'], 
 			'text_header_32': ['32px', '51px'],
 		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
