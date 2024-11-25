@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function NavbarComponent() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false); 
+  const [mounted, setMounted] = useState(false);
   // Only run the theme logic after component mounts
   useEffect(() => {
     setMounted(true); // Set mounted to true after the component has mounted
@@ -33,7 +33,7 @@ export default function NavbarComponent() {
         {/* content navbar */}
         <div className="hidden lg:block ">
           <ul className="flex w-[500px]  text-text_body_16  justify-between">
-            <Link href="/" >Home</Link>
+            <Link href="/">Home</Link>
             <Link href="/UseCase">Use Case</Link>
             <Link href="/Project">Project</Link>
             <Link href="/Document">Document</Link>
