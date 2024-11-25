@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function Component() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
@@ -36,7 +35,7 @@ export default function Component() {
           height={400}
           src="/images/404.png"
           style={{
-            aspectRatio: "1 / 1", // Keep the square ratio for better scaling
+            aspectRatio: "1 / 1", 
             objectFit: "cover",
           }}
         />
