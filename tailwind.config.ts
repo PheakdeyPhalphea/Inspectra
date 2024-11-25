@@ -62,6 +62,12 @@ const config: Config = {
 			link_color: "#0000EE",
 			custom_red: "#EA4335",
   		},
+		fontSize: {
+			'text_body_16': ['16px', '24px'],      
+			'text_title_20': ['20px', '28px'], 
+			'text_title_24': ['24px', '36px'], 
+			'text_header_32': ['32px', '51px'],
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
