@@ -1,29 +1,39 @@
 import LogoSliderComponent from "@/components/LogoSliderComponent/LogoSliderComponent";
-import { Section } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
+import { FaArrowRight } from "react-icons/fa6";
 export default function Home() {
   return (
-    <section className="w-[90%] mx-auto ">
+    <section className="w-[90%] mx-auto relative z-10  ">
       {/* Here Section */}
-      <div className="flex">
-        <div className="space-y-5">
-          <p className=" lg:text-[50px] xl:text-[65px] px-2 inline rounded-tl-[20px] text-text_color_light rounded-br-[20px] bg-primary_color font-medium">
+      <div className="xl:flex h-screen justify-center items-center ">
+        {/* content section */}
+        <div className="text-center xl:text-left space-y-10">
+          <p className="text-[30px] md:text-[40px] xl:text-[60px] px-2 inline rounded-tl-[20px] text-text_color_light rounded-br-[20px] bg-primary_color font-semibold">
             Inspectra
           </p>
-          <p className="w-[80%] text-text_title_24 text-text_color_light font-normal dark:text-text_color_dark">
+          <p className="lg:w-full xl:w-[80%] text-text_title_24 text-text_color_light font-medium dark:text-text_color_dark">
             Through deep, intelligent scanning and proactive insights empowers
             you to uncover hidden risks with precision
             <span className="block mt-10">
               Keeping your systems resilient and your data safe
             </span>
           </p>
-         
+          {/* Centering button */}
+          <div className="flex justify-center lg:justify-center xl:justify-start">
+            <button className="flex justify-between items-center hover:bg-primary_color dark:hover:bg-primary_color hover:text-text_color_light px-5 text-text_color_dark bg-background_dark_mode dark:bg-background_light_mode dark:text-text_color_light rounded-tl-[20px] rounded-br-[20px] w-[160px] h-[50px] text-text_body_16">
+              Try Now
+              <FaArrowRight />
+            </button>
+          </div>
         </div>
-        <div className="w-[50%]">
+
+        {/* image section */}
+        <div className=" hidden  xl:block w-[40%]  ">
           <img
             src="/images/hero section.png"
             alt="hero section image"
-            className="object-cover"
+            className="object-cover "
           />
         </div>
       </div>

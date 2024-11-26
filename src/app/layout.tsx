@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} bg-background_light_mode dark:bg-background_dark_mode flex flex-col justify-between h-screen `}
+        className={`${poppins.className} bg-background_light_mode relative overflow-hidden dark:bg-background_dark_mode flex flex-col justify-between h-screen `}
       >
         <ThemeProvider
           attribute="class"
@@ -34,6 +34,16 @@ export default function RootLayout({
           {/* <BannerComponent /> */}
           <NavbarComponent />
           {children}
+          <img
+            src="/images/Ellipse-bg.png"
+            alt=""
+            className="h-[400px] md:h-[500px] xl:h-[600px] xl:w-[600px] absolute z-0 -top-10 -right-10  filter blur-2xl"
+          />
+           <img
+            src="/images/Ellipse-bg.png"
+            alt=""
+            className="h-[400px] md:h-[500px] md:w-[500px] xl:h-[600px] xl:w-[600px] absolute z-0 -bottom-[5px] -left-[200px]  md:top-[140px] md:-left-[250px] lg:top-[140px] lg:-left-[250px] xl:top-[300px] xl:-left-[400px]  filter blur-3xl"
+          />
           <FooterComponent />
         </ThemeProvider>
       </body>
