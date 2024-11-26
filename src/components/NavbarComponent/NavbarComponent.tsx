@@ -18,7 +18,7 @@ export default function NavbarComponent() {
   if (!mounted) return null;
 
   return (
-    <nav className="w-[90%] mx-auto relative z-10">
+    <nav className="w-[90%] mx-auto relative z-10 backdrop-blur-lg">
       <section className="flex text-text_color_light dark:text-text_color_dark justify-between items-center p-4">
         {/* logo */}
         <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
