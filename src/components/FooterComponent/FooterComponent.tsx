@@ -7,9 +7,9 @@ import { MdEmail } from "react-icons/md";
 export default function FooterComponent() {
   return (
     <footer className="w-[95%] md:w-[98%] rounded-lg bg-card_color_light dark:bg-card_color_dark h-full mx-auto">
-      <div className="w-[95%] mx-auto">
-        <section className="px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-6 mx-auto">
-          {/* logo */}
+      <div className="w-[95%] flex flex-col md:flex-row justify-between mx-auto space-y-5 md:space-y-0">
+        {/* Section 1: Logo */}
+        <section className="w-full md:w-[40%]">
           <div className="p-2 md:p-5">
             <div className="flex items-center">
               <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
@@ -25,7 +25,7 @@ export default function FooterComponent() {
                 Inspectra
               </span>
             </div>
-            {/* content */}
+            {/* Content */}
             <div className="text-text_body_16 lg:text-text_title_24 text-text_color_light dark:text-text_color_dark mt-5">
               <div className="flex md:block lg:flex">
                 <p className="mr-2">See the</p>
@@ -33,7 +33,7 @@ export default function FooterComponent() {
                   Unseen
                 </span>
               </div>
-              <div className="flex md:block lg:flex" >
+              <div className="flex md:block lg:flex">
                 <p className="mr-2">Secure the</p>
                 <span className="md:text-text_body_16 lg:text-text_title_24 text-secondary_color">
                   Unknown
@@ -41,8 +41,11 @@ export default function FooterComponent() {
               </div>
             </div>
           </div>
+        </section>
 
-          {/* feature */}
+        {/* Section 2: Features and Others */}
+        <section className="w-full md:w-[50%] flex flex-col md:flex-row justify-between">
+          {/* Features */}
           <div className="p-2 md:p-5">
             <div className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
               Feature
@@ -75,7 +78,7 @@ export default function FooterComponent() {
             </div>
           </div>
 
-          {/* support */}
+          {/* Support */}
           <div className="p-2 md:p-5">
             <div className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
               Support
@@ -102,12 +105,12 @@ export default function FooterComponent() {
             </div>
           </div>
 
-          {/* our sponsors */}
+          {/* Sponsors */}
           <div className="p-2 md:p-5">
             <div className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
               Our Sponsors
             </div>
-            <div className="flex flex-col h-auto w-full mt-5 space-y-5 items-start">
+            <div className="flex flex-col lg:flex-row h-auto w-full mt-5 space-y-5 lg:space-y-0 lg:space-x-5 items-start">
               <img
                 src="/images/CBRD-logo.png"
                 alt="Logo"
@@ -121,42 +124,41 @@ export default function FooterComponent() {
             </div>
           </div>
         </section>
+      </div>
 
-        {/* second section */}
-        <section className="w-[95%] mx-auto flex flex-col md:flex-row border-t border-text_color_desc_light dark:border-text_color_desc_dark py-5 space-y-4 mt-5 md:space-y-0">
-          {/* Left Section */}
-          <div className="w-full md:w-1/2 text-center md:text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
-            © 2024 Inspectra Inc. <br /> All rights reserved.
+      <section className="w-[95%] mx-auto flex flex-col md:flex-row border-t border-text_color_desc_light dark:border-text_color_desc_dark py-5 space-y-4 mt-5 md:space-y-0">
+        {/* Left Section */}
+        <div className="w-full md:w-1/2 text-center md:text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
+          © 2024 Inspectra Inc. <br /> All rights reserved.
+        </div>
+
+        {/* Social Links Section */}
+        <section className="w-full md:w-1/2 grid grid-cols-2 gap-3 md:flex md:flex-row justify-end items-center text-text_color_desc_light dark:text-text_color_desc_dark mx-auto">
+          {/* GitHub Card */}
+          <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+            <FaGithub className="w-5 h-5" />
+            <span>GitHub</span>
           </div>
 
-          {/* Social Links Section */}
-          <section className="w-full md:w-1/2 grid grid-cols-2 gap-3 md:flex md:flex-row justify-end items-center text-text_color_desc_light dark:text-text_color_desc_dark mx-auto">
-            {/* GitHub Card */}
-            <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-              <FaGithub className="w-5 h-5" />
-              <span>GitHub</span>
-            </div>
+          {/* Facebook Card */}
+          <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+            <FaFacebook className="w-5 h-5" />
+            <span>Facebook</span>
+          </div>
 
-            {/* Facebook Card */}
-            <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-              <FaFacebook className="w-5 h-5" />
-              <span>Facebook</span>
-            </div>
+          {/* Telegram Card */}
+          <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+            <FaTelegram className="w-5 h-5" />
+            <span>Telegram</span>
+          </div>
 
-            {/* Telegram Card */}
-            <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-              <FaTelegram className="w-5 h-5" />
-              <span>Telegram</span>
-            </div>
-
-            {/* Email Card */}
-            <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-              <MdEmail className="w-5 h-5" />
-              <span>Email</span>
-            </div>
-          </section>
+          {/* Email Card */}
+          <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+            <MdEmail className="w-5 h-5" />
+            <span>Email</span>
+          </div>
         </section>
-      </div>
+      </section>
     </footer>
   );
 }
