@@ -34,11 +34,11 @@ export default function NavbarComponent() {
         <div className="hidden lg:block ">
           <ul className="flex w-[500px]  text-text_body_16  justify-between">
             <Link href="/">Home</Link>
-            <Link href="/UseCase">Use Case</Link>
+            <Link href="/useCase">Use Case</Link>
             <Link href="/Project">Project</Link>
             <Link href="/Document">Document</Link>
             <Link href="/Blog">Blog</Link>
-            <Link href="/About Us">About Us</Link>
+            <Link href="/aboutUs">About Us</Link>
           </ul>
         </div>
         {/* group icon and sign in */}
