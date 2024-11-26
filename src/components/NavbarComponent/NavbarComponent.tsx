@@ -58,7 +58,7 @@ export default function NavbarComponent() {
             {/* Sign in button */}
             <Link
               href=""
-              className="text-text_color_dark bg-background_dark_mode dark:bg-background_light_mode dark:text-text_color_light rounded-tl-[20px] rounded-br-[20px] text-text_body_16 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 hidden lg:block"
+              className="text-text_color_dark bg-background_dark_mode dark:bg-background_light_mode dark:text-text_color_light rounded-tl-[20px] rounded-br-[20px] text-text_body_16  px-4 lg:px-5 py-2 lg:py-2.5 hidden lg:block"
             >
               Sign in
             </Link>

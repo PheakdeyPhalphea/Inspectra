@@ -9,7 +9,7 @@ import { MdEmail } from "react-icons/md";
 export default function FooterComponent() {
   const { theme } = useTheme();
   return (
-    <footer className="w-[95%] md:w-[98%] rounded-lg bg-card_color_light dark:bg-card_color_dark h-full mx-auto">
+    <footer className="w-[95%] my-5 md:w-[98%] rounded-lg bg-card_color_light dark:bg-card_color_dark  mx-auto">
       <div className="w-[95%] flex flex-col md:flex-row justify-between mx-auto space-y-5 md:space-y-0">
         {/* Section 1: Logo */}
         <section className="w-full md:w-[30%]">
@@ -118,7 +118,7 @@ export default function FooterComponent() {
               <div className="flex justify-center">
                 <img
                   src="/images/CBRD_Logo.png"
-                  alt="Logo"
+                  alt="CBRD logo"
                   className="object-contain w-[200px] h-auto"
                 />
               </div>
@@ -127,25 +127,25 @@ export default function FooterComponent() {
               <div className="flex justify-center">
                 <img
                   src="/images/MPTC-Logo.png"
-                  alt="Logo"
+                  alt="MPTC"
                   className="object-contain w-[200px] h-auto"
                 />
               </div>
 
               {/* Third Image */}
-              <div className="flex justify-center  ">
-                <div className="w-[200px] h-auto flex items-center justify-center">
+              <div className="flex justify-center">
+                <div className="w-[200px] h-[100px] flex items-center justify-center">
                   {theme === "dark" ? (
                     <img
                       src="/images/White-CSTAD-Logo.png"
                       alt="Logo"
-                      className="object-contain w-full h-auto"
+                      className="object-contain w-full h-full"
                     />
                   ) : (
                     <img
                       src="/images/Dark-CSTAD-Logo.png"
                       alt="Logo"
-                      className="object-contain w-full h-auto"
+                      className="object-contain w-full h-full"
                     />
                   )}
                 </div>
