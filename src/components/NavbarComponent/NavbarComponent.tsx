@@ -39,7 +39,7 @@ export default function NavbarComponent() {
               <Link href="/project">Project</Link>
               <Link href="/document">Document</Link>
               <Link href="/blog">Blog</Link>
-              <Link href="/about Us">About Us</Link>
+              <Link href="/aboutUs">About Us</Link>
             </ul>
           </div>
           {/* group icon and sign in */}
@@ -76,8 +76,8 @@ export default function NavbarComponent() {
                       <Link href="/project">Project</Link>
                       <Link href="/document">Document</Link>
                       <Link href="/blog">Blog</Link>
-                      <Link href="/about Us">About Us</Link>
-                      <Link href="/sign In">Sign in</Link>
+                      <Link href="/aboutUs">About Us</Link>
+                      <Link href="/signIn">Sign in</Link>
                     </ul>
                   </SheetContent>
                 </Sheet>
