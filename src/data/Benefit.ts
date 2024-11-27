@@ -1,22 +1,20 @@
-import { describe } from "node:test";
-
-export const BenefitData = [
+export const benefitData = [
   {
-    image: "/images/hero section.png",
+    image: "/images/deep scan.png",
     title: "Deep Scan",
-    describe:
+    description:
       "Thoroughly scans your Git projects for security risks and highlights specific issues.",
   },
   {
-    image: "/images/hero section.png",
+    image: "/images/Report.png",
     title: "Insightful Reports",
-    describe:
+    description:
       "Provides actionable insights with PDF export for easy documentation and sharing.",
   },
   {
-    image: "/images/hero section.png",
+    image: "/images/Unlimited Access.png",
     title: "Unlimited Access",
-    describe:
+    description:
       "Quick setup with Git URL import, offering unlimited scans for registered users.",
   },
 ];
