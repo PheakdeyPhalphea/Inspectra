@@ -50,27 +50,58 @@ const config: Config = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
-			background_light_mode: "#F5F5F5",
-			background_dark_mode: "#101720",
-			primary_color: "#B9FF66",
-			secondary_color: "#F9B800",
-			ascend_color: "#60935D",
-			text_color_light: "#333333",
-			text_color_desc_light: "#939393",
-			text_color_dark: "#FFFFFF",
-			text_color_desc_dark: "#A4B1CD",
-			link_color: "#0000EE",
-			custom_red: "#EA4335",
-			card_color_light: "#FFFFFF",
-			card_color_dark: "rgba(251, 252, 247, 0.1)", 
+  			background_light_mode: '#F5F5F5',
+  			background_dark_mode: '#101720',
+  			primary_color: '#B9FF66',
+  			secondary_color: '#F9B800',
+  			ascend_color: '#60935D',
+  			text_color_light: '#333333',
+  			text_color_desc_light: '#939393',
+  			text_color_dark: '#FFFFFF',
+  			text_color_desc_dark: '#A4B1CD',
+  			link_color: '#0000EE',
+  			custom_red: '#EA4335',
+  			card_color_light: '#FFFFFF',
+  			card_color_dark: 'rgba(251, 252, 247, 0.1)',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
+  			}
   		},
-		fontSize: {
-			'text_body_16': ['16px', '24px'],      
-			'text_title_20': ['20px', '28px'], 
-			'text_title_24': ['24px', '36px'], 
-			'text_header_32': ['32px', '51px'],
-		},
-  		
+  		fontSize: {
+  			text_body_16: ['16px', '24px'],
+  			text_title_20: ['20px', '28px'],
+  			text_title_24: ['24px', '36px'],
+  			text_header_32: ['32px', '51px']
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

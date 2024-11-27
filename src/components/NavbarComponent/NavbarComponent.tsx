@@ -73,7 +73,7 @@ export default function NavbarComponent() {
                     <Link href="/">Home</Link>
                     <Link href="/UseCase">Use Case</Link>
                     <Link href="/Project">Project</Link>
-                    <Link href="/Document">Document</Link>
+                    <Link href="/document">Document</Link>
                     <Link href="/Blog">Blog</Link>
                     <Link href="/About Us">About Us</Link>
                     <Link href="/Sign In">Sign in</Link>
