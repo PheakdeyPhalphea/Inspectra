@@ -2,7 +2,13 @@ import BenefitComponentCard from "@/components/BenefitComponentCard/BenefitCompo
 import FeedbackCard from "@/components/FeedbackCardComponent/FeedbackCard";
 import LogoSliderComponent from "@/components/LogoSliderComponent/LogoSliderComponent";
 import WorkingProcessCard from "@/components/WorkingProcessCard/WorkingProcessCard";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 export default function Home() {
   return (
@@ -108,6 +114,52 @@ export default function Home() {
           User Feedback
         </p>
         <FeedbackCard />
+      </div>
+
+      {/* FAQs section */}
+      <div className="w-full text-center lg:my-[60px]">
+        <Link href="/faq">
+          {" "}
+          <p className="text-text_header_34 px-2 inline rounded-tl-[20px] text-text_color_light rounded-br-[20px] bg-primary_color font-semibold">
+            FAQs
+          </p>{" "}
+        </Link>
+        <div>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-text_color_light dark:text-text_color_dark  text-left text-text_title_20">
+                Does Inspectra support containerized and cloud-native
+                environments?
+              </AccordionTrigger>
+              <AccordionContent className="text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
+                Inspectra is built with Docker for containerization and is
+                deployable in Kubernetes (K8s) environments if required. This
+                setup provides flexibility for scalable cloud-native deployment.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="text-text_color_light dark:text-text_color_dark  text-left text-text_title_20">
+                How does Inspectra perform white-box testing?
+              </AccordionTrigger>
+              <AccordionContent className="text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
+                Inspectra provides a white- box testing platform to review
+                source code and identify security weaknesses. Using SonarQube
+                and WASP Checker, Inspectra analyzes code structure and
+                vulnerabilities directly within your Git projects.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="text-text_color_light dark:text-text_color_dark  text-left text-text_title_20">
+                How does Inspectra handle automation and script-based workflows?
+              </AccordionTrigger>
+              <AccordionContent className="text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
+                Inspectra utilizes ShellScript and PowerShell for automating
+                scans and tasks, providing compatibility across both Linux and
+                Windows environments.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
       </div>
     </section>
   );
