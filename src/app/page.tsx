@@ -1,7 +1,9 @@
 import BenefitComponentCard from "@/components/BenefitComponentCard/BenefitComponentCard";
 import FeedbackCard from "@/components/FeedbackCardComponent/FeedbackCard";
+import HeroComponent from "@/components/HeroComponent/HeroComponent";
 import LogoSliderComponent from "@/components/LogoSliderComponent/LogoSliderComponent";
 import WorkingProcessCard from "@/components/WorkingProcessCard/WorkingProcessCard";
+
 import {
   Accordion,
   AccordionContent,
@@ -14,38 +16,7 @@ export default function Home() {
   return (
     <main className="w-[90%] mx-auto relative z-10">
       {/* Hero Section */}
-      <section className="xl:flex my-[60px] justify-center items-center">
-        {/* Content Section */}
-        <section className="text-center  xl:text-left space-y-5">
-          <p className="text-[30px] md:text-[40px] xl:text-[60px] px-2 inline rounded-tl-[20px] text-text_color_light rounded-br-[20px] bg-primary_color font-semibold">
-            Inspectra
-          </p>
-          <p className="lg:w-full  xl:w-[80%] text-text_body_16 md:text-text_title_24 text-text_color_light font-medium dark:text-text_color_dark">
-            Through deep, intelligent scanning and proactive insights empowers
-            you to uncover hidden risks with precision
-            <span className="block lg:my-5 xl:mt-10">
-              Keeping your systems resilient and your data safe
-            </span>
-          </p>
-          {/* Centering Button */}
-          <section className="flex justify-center lg:justify-center xl:justify-start">
-            <button className="flex justify-between items-center hover:bg-primary_color dark:hover:bg-primary_color hover:text-text_color_light px-5 text-text_color_dark bg-background_dark_mode dark:bg-background_light_mode dark:text-text_color_light rounded-tl-[20px] rounded-br-[20px] w-[160px] h-[50px] text-text_body_16">
-              Try Now
-              <FaArrowRight />
-            </button>
-          </section>
-        </section>
-
-        {/* Image Section */}
-        <section className="hidden justify-end items-end xl:block w-[40%]">
-          <img
-            src="/images/hero section.png"
-            alt="hero section image"
-            className="object-cover w-[400px]"
-          />
-        </section>
-      </section>
-
+      <HeroComponent />
       {/* Our Working Process */}
       <section className="w-full relative h-[1750px]  md:h-[1200px]  lg:h-[1150px] xl:h-[900px]">
         <section className="w-full rounded-tl-[50px] text-center rounded-br-[50px]   md:h-[900px] lg:h-[900px] xl:h-[650px] bg-text_color_light">

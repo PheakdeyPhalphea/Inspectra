@@ -69,10 +69,10 @@ export default function WorkingProcessCard() {
               </span>
             </p>
             <p className="text-text_title_24 font-semibold text-text_color_light ">
-              Report
+              Export
             </p>
             <p className="md:text-text_title_20 font-normal text-ascend_color ">
-              Get Detail Report and Recommendation
+              Export as PDF
             </p>
           </div>
         </div>
