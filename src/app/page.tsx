@@ -19,7 +19,7 @@ export default function Home() {
       <HeroComponent />
       {/* Our Working Process */}
       <section className="w-full relative h-[1750px]  md:h-[1200px]  lg:h-[1150px] xl:h-[900px]">
-        <section className="w-full rounded-tl-[50px] text-center rounded-br-[50px]   md:h-[900px] lg:h-[900px] xl:h-[650px] bg-text_color_light">
+        <section className="w-full rounded-tl-[50px] text-center rounded-br-[50px]   md:h-[900px] lg:h-[900px] xl:h-[650px] bg-text_color_light ">
           <p className=" text-text_title_24 md:text-text_header_34 py-10 text-primary_color">
             Our Working Process
           </p>
@@ -37,7 +37,7 @@ export default function Home() {
               <p className=" w-full text-center text-text_title_24 md:w-[500px] xl:w-[300px] md:text-left text-text_color_dark md:text-text_header_34">
                 Inspect, Improve, Innovative
               </p>
-              <section className="my-10 flex justify-center lg:justify-center xl:justify-start">
+              <section className="my-10 md:w-[500px] flex justify-center items-center xl:justify-start">
                 <button className="flex justify-between items-center bg-primary_color px-5 text-text_color_light rounded-tl-[20px] rounded-br-[20px] w-[180px] h-[50px] text-text_body_16">
                   Try Now
                   <FaArrowRight />

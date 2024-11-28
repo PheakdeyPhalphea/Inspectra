@@ -16,11 +16,9 @@ export default function page() {
           <div className="p-2 rounded-2xl w-[50px] items-center text-text_color_light flex justify-center bg-primary_color">
             All
           </div>
-          <div className="p-2 rounded-2xl w-[165px] items-center text-text_color_light flex justify-center bg-text_color_dark">
-            Create Project{" "}
-            <span className="mx-2">
-              <LuPlus />
-            </span>
+          <div className="p-2 rounded-2xl w-[170px]  items-center text-text_color_light flex justify-around bg-text_color_dark">
+            Create Project
+             <LuPlus/>
           </div>
         </div>
       </section>

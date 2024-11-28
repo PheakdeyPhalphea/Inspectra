@@ -1,7 +1,7 @@
 export const facetsData = {
   facets: [
     {
-      property: "coverage",
+      property: "Coverage",
       values: [
         {
           val: "NO_DATA",
@@ -30,20 +30,7 @@ export const facetsData = {
       ],
     },
     {
-      property: "alert_status",
-      values: [
-        {
-          val: "ERROR",
-          count: 2,
-        },
-        {
-          val: "OK",
-          count: 8,
-        },
-      ],
-    },
-    {
-      property: "reliability_rating",
+      property: "Reliability",
       values: [
         {
           val: "1",
@@ -68,7 +55,7 @@ export const facetsData = {
       ],
     },
     {
-      property: "duplicated_lines_density",
+      property: "Duplicated",
       values: [
         {
           val: "*-3.0",
@@ -97,52 +84,7 @@ export const facetsData = {
       ],
     },
     {
-      property: "languages",
-      values: [
-        {
-          val: "css",
-          count: 5,
-        },
-        {
-          val: "js",
-          count: 5,
-        },
-        {
-          val: "ts",
-          count: 4,
-        },
-        {
-          val: "docker",
-          count: 3,
-        },
-        {
-          val: "web",
-          count: 3,
-        },
-        {
-          val: "py",
-          count: 2,
-        },
-        {
-          val: "xml",
-          count: 2,
-        },
-        {
-          val: "go",
-          count: 1,
-        },
-        {
-          val: "java",
-          count: 1,
-        },
-        {
-          val: "php",
-          count: 1,
-        },
-      ],
-    },
-    {
-      property: "security_rating",
+      property: "Security",
       values: [
         {
           val: "1",
@@ -167,45 +109,7 @@ export const facetsData = {
       ],
     },
     {
-      property: "qualifier",
-      values: [
-        {
-          val: "APP",
-          count: 0,
-        },
-        {
-          val: "TRK",
-          count: 10,
-        },
-      ],
-    },
-    {
-      property: "ncloc",
-      values: [
-        {
-          val: "*-1000.0",
-          count: 7,
-        },
-        {
-          val: "1000.0-10000.0",
-          count: 2,
-        },
-        {
-          val: "10000.0-100000.0",
-          count: 0,
-        },
-        {
-          val: "100000.0-500000.0",
-          count: 1,
-        },
-        {
-          val: "500000.0-*",
-          count: 0,
-        },
-      ],
-    },
-    {
-      property: "security_review_rating",
+      property: "Security Review",
       values: [
         {
           val: "1",
@@ -234,4 +138,32 @@ export const facetsData = {
       values: [],
     },
   ],
+  values: [
+   {
+     grade: "A",
+     result: "Excellent",
+     borderColor: "#B9FF66"
+   },
+    {
+      grade: "B",
+      result: "Good",
+      borderColor: "#60935D"
+    },
+    {
+      grade: "C",
+      result: "Average",
+      borderColor: "#F7DC6F"
+    },
+    {
+      grade: "D",
+      result: "Poor",
+      borderColor: "#F9B800"
+    },
+    {
+      grade: "F",
+      result: "Fail",
+      borderColor: "#EA4335"
+    },
+
+  ]
 };
