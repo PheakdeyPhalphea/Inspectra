@@ -34,12 +34,12 @@ export default function NavbarComponent() {
           {/* content navbar */}
           <div className="hidden lg:block ">
             <ul className="flex w-[500px]  text-text_body_16  justify-between">
-              <Link href="/">Home</Link>
-              <Link href="/UseCase">Use Case</Link>
-              <Link href="/Project">Project</Link>
-              <Link href="/Document">Document</Link>
-              <Link href="/Blog">Blog</Link>
-              <Link href="/About Us">About Us</Link>
+              <Link href="/">home</Link>
+              <Link href="/useCase">Use Case</Link>
+              <Link href="/project">Project</Link>
+              <Link href="/document">Document</Link>
+              <Link href="/blog">Blog</Link>
+              <Link href="/aboutUs">About Us</Link>
             </ul>
           </div>
           {/* group icon and sign in */}
@@ -71,13 +71,12 @@ export default function NavbarComponent() {
                   </SheetTrigger>
                   <SheetContent className="bg-background_light_mode dark:bg-background_dark_mode border-hidden">
                     <ul className="  text-text_color_light dark:text-text_color_dark  text-text_body_16  justify-between space-y-4 flex flex-col">
-                      <Link href="/">Home</Link>
-                      <Link href="/UseCase">Use Case</Link>
-                      <Link href="/Project">Project</Link>
-                      <Link href="/Document">Document</Link>
-                      <Link href="/Blog">Blog</Link>
-                      <Link href="/About Us">About Us</Link>
-                      <Link href="/Sign In">Sign in</Link>
+                      <Link href="/">home</Link>
+                      <Link href="/useCase">Use Case</Link>
+                      <Link href="/project">Project</Link>
+                      <Link href="/document">Document</Link>
+                      <Link href="/blog">Blog</Link>
+                      <Link href="/aboutUs">About Us</Link>
                     </ul>
                   </SheetContent>
                 </Sheet>
