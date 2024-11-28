@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import NavbarComponent from "@/components/NavbarComponent/NavbarComponent";
 import FooterComponent from "@/components/FooterComponent/FooterComponent";
 import BannerComponent from "@/components/BannerComponent/BannerComponent";
+import { Suspense } from "react";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -33,7 +34,8 @@ export default function RootLayout({
         >
           {/* <BannerComponent /> */}
           <NavbarComponent />
-          {children}
+          <Suspense fallback={""}>{children}</Suspense>
+
           <img
             src="/images/Ellipse-bg.png"
             alt=""
