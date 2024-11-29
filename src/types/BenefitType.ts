@@ -1,5 +1,6 @@
 export type benefitType = {
-  image: string;
+  imageLight: string;
+  imageDark: string;
   title: string;
   description: string;
 };
