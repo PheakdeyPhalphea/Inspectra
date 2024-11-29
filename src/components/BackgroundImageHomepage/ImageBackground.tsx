@@ -7,7 +7,7 @@ export default function ImageBackground() {
   const pathname = usePathname(); // Get the current path.
 
   // Hide images only on the '/aboutUs' page.
-  const isAboutUs = pathname === "/aboutUs";
+  const isAboutUs = pathname === "/aboutUs" || pathname === "/useCase";
 
   return (
     <>
