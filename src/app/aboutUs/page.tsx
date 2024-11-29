@@ -1,9 +1,11 @@
-import React from 'react'
+
+import React from 'react';
 import TeamComponent from '@/components/AboutUsComponent/TeamComponent';
 import MentorComponent from '@/components/AboutUsComponent/MentorComponent';
-import { Textarea } from '@/components/ui/textarea';
+import FeedbackComponent from '@/components/Feedback/FeedbackComponent';
 
 export default function page() {
+
   return (
     <main className='my-[60px]'>
       {/* hero section */}
@@ -43,30 +45,8 @@ export default function page() {
       <TeamComponent />
 
       {/* feedback section */}
-      <section className='w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10'>
-        <div className="p-14 flex flex-col gap-5 bg-text_color_dark dark:bg-card_color_dark rounded-xl">
-          {/* Title Section */}
-          <div className="inline-block px-5 font-semibold bg-primary_color py-2 rounded-tl-[20px] rounded-br-[20px] w-max">
-            <p className="text-text_color_light text-text_title_20">Be the first to FeedBack</p>
-          </div>
-
-          {/* Description */}
-          <p className="text-text_body_16 text-text_color_desc_light font-normal">
-            Feel Free to Share Your Experience with Us and other Users
-          </p>
-
-          {/* Textarea */}
-          <Textarea placeholder="Your Feedback" className='h-full'/>
-
-          {/* Button */}
-          <button className="inline-block px-5 font-semibold bg-background_dark_mode py-2 rounded-tl-[20px] rounded-br-[20px] w-max">
-            <p className="text-text_color_dark text-text_body_16 font-normal">Submit</p>
-          </button>
-        </div>
-        <div className='w-[400px] h-[400px] hidden lg:block mx-auto'>
-          <img className='w-[100%] h-[100%] object-contain' src="/images/feedback.png" alt="feedback" />
-        </div>
-      </section>
+      <FeedbackComponent />
     </main>
   );
 }
+

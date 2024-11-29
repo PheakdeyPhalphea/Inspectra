@@ -4,8 +4,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import NavbarComponent from "@/components/NavbarComponent/NavbarComponent";
 import FooterComponent from "@/components/FooterComponent/FooterComponent";
-
+ 
 import { Suspense } from "react";
+import StoreProvider from "./StoreProvider";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -27,28 +28,32 @@ export default function RootLayout({
       <body
         className={`${poppins.className} bg-background_light_mode relative  overflow-y-auto   overflow-x-hidden dark:bg-background_dark_mode flex flex-col justify-between  `}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {/* <BannerComponent /> */}
-          <NavbarComponent />
-          <Suspense fallback={""}>{children}</Suspense>
+        <StoreProvider >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {/* <BannerComponent /> */}
+            <NavbarComponent />
+            <Suspense fallback={""}>
+              {children}
+            </Suspense>
 
-          <img
-            src="/images/Ellipse-bg.png"
-            alt=""
-            className=" hidden lg:block md:h-[500px] xl:h-[600px] xl:w-[600px] absolute -z-30 -top-10 -right-10  filter blur-2xl"
-          />
-          <img
-            src="/images/Ellipse-bg.png"
-            alt=""
-            className=" hidden lg:block md:h-[500px] md:w-[500px] xl:h-[600px] xl:w-[600px] absolute -z-30 -bottom-[5px] -left-[200px]  md:top-[140px] md:-left-[250px] lg:top-[140px] lg:-left-[250px] xl:top-[300px] xl:-left-[400px]  filter blur-3xl"
-          />
-          <FooterComponent />
-        </ThemeProvider>
+            <img
+              src="/images/Ellipse-bg.png"
+              alt=""
+              className=" hidden lg:block md:h-[500px] xl:h-[600px] xl:w-[600px] absolute -z-30 -top-10 -right-10  filter blur-2xl"
+            />
+            <img
+              src="/images/Ellipse-bg.png"
+              alt=""
+              className=" hidden lg:block md:h-[500px] md:w-[500px] xl:h-[600px] xl:w-[600px] absolute -z-30 -bottom-[5px] -left-[200px]  md:top-[140px] md:-left-[250px] lg:top-[140px] lg:-left-[250px] xl:top-[300px] xl:-left-[400px]  filter blur-3xl"
+            />
+            <FooterComponent />
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );
