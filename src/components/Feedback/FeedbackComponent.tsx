@@ -16,7 +16,7 @@ export default function FeedbackComponent() {
     const handleSubmit = (e: any) => {
       e.preventDefault(); // Prevent page refresh on form submit
       setFeedback(''); // Clear the textarea after submission
-      toast( {description: "Thank For FeedBack Our Team Will Review It", variant: "success"})
+      toast( {description: "Thank For FeedBack Our Team Will Review It", variant: "error"})
       console.log(createUserFeedback({message: feedback}))
     };
   return (
