@@ -1,26 +1,72 @@
-import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
 import React from 'react'
-
+import TeamComponent from '@/components/AboutUsComponent/TeamComponent';
+import MentorComponent from '@/components/AboutUsComponent/MentorComponent';
+import { Textarea } from '@/components/ui/textarea';
 
 export default function page() {
   return (
-    <main>
-       <section className="text-center">
-          <h1 className="inline-block rounded-full bg-green-400 px-6 py-2 text-2xl font-bold">
-            Who&apos;s it for ?
-          </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600">
-            Inspectra is widely used by various roles in software development to maintain and improve code quality. Developers
-            rely on it to get insights into their code, identifying potential issues like bugs, code smells, and security
-            vulnerabilities, which helps them write cleaner and more maintainable code. Development teams use Inspectra to
-            enforce consistent coding standards across projects, reduce bugs, and track areas of technical debt.
+    <main className='my-[60px]'>
+      {/* hero section */}
+      <section className='mx-auto text-center w-[90%]'>
+        <div className='text-[20px] md:text-[30px] xl:text-[40px] inline-flex px-5 font-semibold bg-text_color_light py-2 rounded-tl-[20px] rounded-br-[20px]'>
+          <p className='text-primary_color'>See the Unseen, Secure the Unknown.</p>
+        </div>
+        <div className='my-3 w-[90%] lg:w-[70%] mx-auto'>
+          <p>Inspectra empowers you to uncover hidden risks with precision. Through deep, intelligent scanning and proactive insights, we help you secure your code and protect against unseen vulnerabilities—keeping your systems resilient and your data safe</p>
+        </div>
+      </section>
+
+      {/* mentor section */}
+      <MentorComponent />
+
+      {/* mission and vision section */}
+      <section className='w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10'>
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-[20px] md:text-[30px] xl:text-[40px] inline-flex px-5 font-semibold bg-primary_color dark:bg-text_color_light py-2 rounded-tl-[20px] rounded-br-[20px]">
+            <p className="text-text_color_light dark:text-primary_color text-center">Our Mission</p>
+          </div>
+          <div className='w-[90%] mx-auto'>
+            <p className='text-text_color_desc_light md:text-text_color_desc_light dark:text-text_color_desc_dark text-text_title_16 my-5'>Our Mission of <span className='text-secondary_color'>Inspectra</span> is to empower developers and security teams to proactively identify and address code vulnerabilities. By scanning project code for weaknesses, <span className='text-secondary_color'>Inspectra</span> helps ensure secure development practices, minimizes the risk of potential exploits, and strengthens the overall security posture of software applications.</p>
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-[20px] md:text-[30px] xl:text-[40px] inline-flex px-5 font-semibold bg-primary_color dark:bg-text_color_light py-2 rounded-tl-[20px] rounded-br-[20px]">
+            <p className="text-text_color_light dark:text-primary_color text-center">Our Vision</p>
+          </div>
+          <div className='w-[90%] mx-auto'>
+            <p className='text-text_color_desc_light md:text-text_color_desc_light dark:text-text_color_desc_dark text-text_title_16 my-5'>The vision of <span className='text-secondary_color'>Inspectra</span> is to become a leading, trusted platform for secure code analysis, enabling developers to build safer software from the ground up. By integrating seamlessly into development workflows, <span className='text-secondary_color'>Inspectra</span> aims to foster a proactive security culture, reducing vulnerabilities and making secure coding practices accessible, efficient, and standard in software development worldwide.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* team section */}
+      <TeamComponent />
+
+      {/* feedback section */}
+      <section className='w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10'>
+        <div className="p-14 flex flex-col gap-5 bg-text_color_dark dark:bg-card_color_dark rounded-xl">
+          {/* Title Section */}
+          <div className="inline-block px-5 font-semibold bg-primary_color py-2 rounded-tl-[20px] rounded-br-[20px] w-max">
+            <p className="text-text_color_light text-text_title_20">Be the first to FeedBack</p>
+          </div>
+
+          {/* Description */}
+          <p className="text-text_body_16 text-text_color_desc_light font-normal">
+            Feel Free to Share Your Experience with Us and other Users
           </p>
-          <Button className="mt-8 bg-gray-900" size="lg">
-            Get Started
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </section>
+
+          {/* Textarea */}
+          <Textarea placeholder="Your Feedback" className='h-full'/>
+
+          {/* Button */}
+          <button className="inline-block px-5 font-semibold bg-background_dark_mode py-2 rounded-tl-[20px] rounded-br-[20px] w-max">
+            <p className="text-text_color_dark text-text_body_16 font-normal">Submit</p>
+          </button>
+        </div>
+        <div className='w-[400px] h-[400px] hidden lg:block mx-auto'>
+          <img className='w-[100%] h-[100%] object-contain' src="/images/feedback.png" alt="feedback" />
+        </div>
+      </section>
     </main>
   );
 }
