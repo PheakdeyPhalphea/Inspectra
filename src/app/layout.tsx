@@ -4,7 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import NavbarComponent from "@/components/NavbarComponent/NavbarComponent";
 import FooterComponent from "@/components/FooterComponent/FooterComponent";
- 
+import { Toaster } from "@/components/ui/toaster"
+  
 import { Suspense } from "react";
 import StoreProvider from "./StoreProvider";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
             <NavbarComponent />
             <Suspense fallback={""}>
               {children}
+              <Toaster />
             </Suspense>
 
             <img

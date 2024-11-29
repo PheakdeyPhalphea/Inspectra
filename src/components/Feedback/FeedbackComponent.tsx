@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { Textarea } from '@/components/ui/textarea';
 import { useCreateUserFeedbackMutation } from '@/redux/service/feedback';
+import { useToast } from "@/components/hooks/use-toast"
 
 export default function FeedbackComponent() {
-   
+  const { toast } = useToast()
     const [createUserFeedback, {isSuccess, isError}] = useCreateUserFeedbackMutation(); // waitin for test api
     const [feedback, setFeedback] = useState('') // State to capture feedback
 
@@ -15,6 +16,7 @@ export default function FeedbackComponent() {
     const handleSubmit = (e: any) => {
       e.preventDefault(); // Prevent page refresh on form submit
       setFeedback(''); // Clear the textarea after submission
+      toast( {description: "Thank For FeedBack Our Team Will Review It", variant: "success"})
       console.log(createUserFeedback({message: feedback}))
     };
   return (
