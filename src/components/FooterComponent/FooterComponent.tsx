@@ -1,15 +1,18 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { useTheme } from "next-themes";
 import { MdEmail } from "react-icons/md";
 export default function FooterComponent() {
+  const { theme } = useTheme();
   return (
-    <footer className="w-[95%] md:w-[98%] rounded-lg bg-card_color_light dark:bg-card_color_dark h-full mx-auto">
+    <footer className="w-[95%] my-5 md:w-[98%] z-20 rounded-[20px] bg-card_color_light dark:bg-card_color_dark  mx-auto">
       <div className="w-[95%] flex flex-col md:flex-row justify-between mx-auto space-y-5 md:space-y-0">
         {/* Section 1: Logo */}
-        <section className="w-full md:w-[40%]">
+        <section className="w-full md:w-[30%]">
           <div className="p-2 md:p-5">
             <div className="flex items-center">
               <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
@@ -44,9 +47,9 @@ export default function FooterComponent() {
         </section>
 
         {/* Section 2: Features and Others */}
-        <section className="w-full md:w-[50%] flex flex-col md:flex-row justify-between">
+        <section className="w-full md:w-[65%] flex flex-col md:flex-row justify-between">
           {/* Features */}
-          <div className="p-2 md:p-5">
+          <div className="p-2 w-[20%] md:p-5">
             <div className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
               Feature
             </div>
@@ -79,7 +82,7 @@ export default function FooterComponent() {
           </div>
 
           {/* Support */}
-          <div className="p-2 md:p-5">
+          <div className="p-2 w-[20%] md:p-5">
             <div className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
               Support
             </div>
@@ -106,21 +109,47 @@ export default function FooterComponent() {
           </div>
 
           {/* Sponsors */}
-          <div className="p-2 md:p-5">
+          <div className="p-2 w-full md:p-5">
             <div className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
               Our Sponsors
             </div>
-            <div className="flex flex-col lg:flex-row h-auto w-full mt-5 space-y-5 lg:space-y-0 lg:space-x-5 items-start">
-              <img
-                src="/images/CBRD-logo.png"
-                alt="Logo"
-                className="object-cover md:w-full lg:w-[50%] h-auto"
-              />
-              <img
-                src="/images/MPTC-logo.png"
-                alt="Logo"
-                className="object-cover md:w-full lg:w-[50%] h-auto"
-              />
+            <div className="w-[90%] flex flex-wrap justify-between lg:space-y-0 space-y-4 lg:flex-row xl:grid xl:grid-cols-3 xl:gap-4 mt-5">
+              {/* First Image */}
+              <div className="flex justify-center">
+                <img
+                  src="/images/CBRD_Logo.png"
+                  alt="CBRD logo"
+                  className="object-contain w-[200px] h-auto"
+                />
+              </div>
+
+              {/* Second Image */}
+              <div className="flex justify-center">
+                <img
+                  src="/images/MPTC-Logo.png"
+                  alt="MPTC"
+                  className="object-contain w-[200px] h-auto"
+                />
+              </div>
+
+              {/* Third Image */}
+              <div className="flex justify-center">
+                <div className="w-[200px] h-[100px] flex items-center justify-center">
+                  {theme === "dark" ? (
+                    <img
+                      src="/images/White-CSTAD-Logo.png"
+                      alt="Logo"
+                      className="object-contain w-full h-full"
+                    />
+                  ) : (
+                    <img
+                      src="/images/Dark-CSTAD-Logo.png"
+                      alt="Logo"
+                      className="object-contain w-full h-full"
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </section>

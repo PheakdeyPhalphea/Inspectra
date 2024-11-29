@@ -1,0 +1,77 @@
+.image {
+  height: 130px;
+  width: 130px;
+}
+/* Slider.module.css */
+
+/* Main slider container */
+.slider {
+  height: 120px; /* Adjust height as needed */
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 90%; /* Adjust width as needed */
+}
+
+/* To create an effect of overlapping to hide the end of scrolling */
+.slider::before,
+.slider::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg); /* Inverts to create a seamless effect */
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+/* Track where the images are placed */
+.slideTrack {
+  animation: scroll 30s linear infinite;
+  display: flex;
+  width: calc(
+    250px * 14
+  ); /* Length of the track (image width * number of images) */
+}
+
+/* Individual image slides */
+.slide {
+  height: 100px;
+  width: 250px;
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+}
+
+.slide img {
+  max-width: 100%; /* Ensures the image doesn't overflow */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: contain; /* Ensures the image is centered within its container */
+}
+
+/* Animation to move the images */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-250px * 8)
+    ); /* Scroll the full length of the track */
+  }
+}
+
+/* Optionally, duplicate the images for seamless infinite scrolling */
+.slideTrack {
+  display: flex;
+  width: calc(250px * 16); /* Double the number of images for a seamless loop */
+}
