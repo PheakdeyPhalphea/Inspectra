@@ -16,7 +16,7 @@ export default function ResultCardComponent() {
           return (
             <div
               key={`coverage-${index}`}
-              className="w-full rounded-tl-[20px] rounded-[20px] h-full mt-10 bg-text_color_dark"
+              className="w-full rounded-tl-[20px] rounded-[20px] h-full mt-10 bg-text_color_dark dark:bg-card_color_dark"
             >
               <div className="text-text_body_16 text-text_color_light rounded-tl-[20px] rounded-br-[20px] bg-primary_color flex justify-center items-center text-center h-[40px] w-[150px]">
                 Coverage
@@ -44,13 +44,13 @@ export default function ResultCardComponent() {
                           ) : null}{" "}
                           {/* Do not render anything if the image is not provided */}
                           {/* Text */}
-                          <p className="px-2 text-text_color_light text-text_body_16">
+                          <p className="px-2 text-text_color_light dark:text-text_color_dark text-text_body_16">
                             {coverageItem?.percent || "No Data"}
                           </p>
                         </div>
 
                         {/* Right-Side Text */}
-                        <p className="text-text_color_desc_light text-text_body_16">
+                        <p className="text-text_color_desc_light dark:text-text_color_desc_dark text-text_body_16">
                           0
                         </p>
                       </div>
@@ -64,7 +64,7 @@ export default function ResultCardComponent() {
           return (
             <div
               key={`duplication-${index}`}
-              className="w-full rounded-tl-[20px] rounded-[20px] h-full mt-10 bg-text_color_dark"
+              className="w-full rounded-tl-[20px] rounded-[20px] h-full mt-10 bg-text_color_dark dark:bg-card_color_dark"
             >
               {/* Duplication Header */}
               <div className="text-text_body_16 text-text_color_light rounded-tl-[20px] rounded-br-[20px] bg-primary_color flex justify-center items-center text-center h-[40px] w-[150px]">
@@ -98,13 +98,13 @@ export default function ResultCardComponent() {
                           ) : null}{" "}
                           {/* Do not render anything if the image is not provided */}
                           {/* Text */}
-                          <p className="px-2 text-text_color_light mt-2 text-text_body_16">
+                          <p className="px-2 text-text_color_light dark:text-text_color_dark mt-2 text-text_body_16">
                             {duplicationItem?.percent || "No Data"}
                           </p>
                         </div>
 
                         {/* Right-Side Text */}
-                        <p className="text-text_color_desc_light text-text_body_16">
+                        <p className="text-text_color_desc_light dark:text-text_color_desc_dark text-text_body_16">
                           0
                         </p>
                       </div>
@@ -118,7 +118,7 @@ export default function ResultCardComponent() {
           return (
             <div
               key={`other-${index}`}
-              className="w-full rounded-tl-[20px] rounded-[20px] h-full mt-10 bg-text_color_dark"
+              className="w-full rounded-tl-[20px] rounded-[20px] h-full mt-10 bg-text_color_dark dark:bg-card_color_dark"
             >
               <div className="text-text_body_16 text-text_color_light rounded-tl-[20px] rounded-br-[20px] bg-primary_color flex justify-center items-center text-center h-[40px] w-[150px]">
                 {item.property}
@@ -133,7 +133,7 @@ export default function ResultCardComponent() {
                     >
                       <div className="flex text-center items-center">
                         <div
-                          className="w-[30px] h-[30px] flex items-center justify-center text-text_color_light rounded-[5px]"
+                          className="w-[30px] h-[30px] flex items-center justify-center text-text_color_light dark:text-text_color_dark rounded-[5px]"
                           style={{
                             border: `1px solid ${
                               gradeData.borderColor || "#ffffff"
@@ -142,11 +142,11 @@ export default function ResultCardComponent() {
                         >
                           {gradeData.grade || ""}
                         </div>
-                        <p className="px-2 text-text_color_light text-text_body_16">
+                        <p className="px-2 text-text_color_light dark:text-text_color_dark text-text_body_16">
                           {gradeData.result || "No Result"}
                         </p>
                       </div>
-                      <p className="text-text_color_desc_light text-text_body_16">
+                      <p className="text-text_color_desc_light dark:text-text_color_desc_dark text-text_body_16">
                         0
                       </p>
                     </div>

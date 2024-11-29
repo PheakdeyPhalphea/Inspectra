@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 export default function ProjectCardComponent() {
   return (
-    <section className="w-full h-[230px]  p-5 border  border-opacity-40 border-text_color_desc_light rounded-[20px] ">
+    <section className="w-full h-full md:h-[230px] p-5 border border-opacity-40 border-text_color_desc_light dark:border-primary_color rounded-[20px] ">
       <div className="flex justify-between w-full">
         <p className="text-text_body_16 text-text_color_light dark:text-text_color_dark ">
           {projectData.projectName}
@@ -12,7 +12,7 @@ export default function ProjectCardComponent() {
         {projectData.projectResult === "Passed" ? (
           <div className="flex text-center items-center">
             <div className="w-[25px] h-[25px] flex items-center justify-center rounded-[5px] bg-primary_color">
-              <FaCheck />
+              <FaCheck className="dark:text-text_color_light"/>
             </div>
             <p className=" px-2 text-text_body_16">
               {projectData.projectResult}
@@ -21,7 +21,7 @@ export default function ProjectCardComponent() {
         ) : (
           <div className="flex text-center items-center">
             <div className="w-[25px] h-[25px] flex items-center justify-center rounded-[5px] bg-custom_red">
-              <RxCross2 />
+              <RxCross2 className="dark:text-text_color_light"/>
             </div>
             <p className=" px-2 text-text_body_16">
               {projectData.projectResult}
@@ -36,9 +36,9 @@ export default function ProjectCardComponent() {
         </span>{" "}
         {projectData.analysisResult}
       </p>
-      <hr className="my-5" />
+      <hr className="my-5 dark:border-primary_color" />
 
-      <div className="h-full flex ">
+      <div className="h-full flex flex-col md:flex-row">
         {/* security */}
         <div className="w-full h-full">
           {/* score security */}
