@@ -1,9 +1,10 @@
-
 import { LuPlus } from "react-icons/lu";
 import React from "react";
 
 import QualityCardComponent from "@/components/CardResultComponent/QualityGateCardComponent";
 import ResultCardComponent from "@/components/CardResultComponent/ResultCardComponent";
+import ProjectCardComponent from "@/components/CardProjectComponent/ProjectCardComponent";
+import ProjectCardNameComponent from "@/components/CardProjectComponent/ProjectCardNameComponent";
 
 export default function page() {
   return (
@@ -18,16 +19,19 @@ export default function page() {
           </div>
           <div className="p-2 rounded-2xl w-[170px]  items-center text-text_color_light flex justify-around bg-text_color_dark">
             Create Project
-             <LuPlus/>
+            <LuPlus />
           </div>
         </div>
       </section>
       <section className="w-full h-full flex justify-between my-[60px]">
-        <div className="w-[30%] ">
+        <div className="w-[30%] hidden lg:block">
           <QualityCardComponent />
           <ResultCardComponent />
         </div>
-        <div className="w-[65%] bg-blue-500 ">kjasdbjaskd</div>
+        <div className="w-[65%] p-10 rounded-[20px] bg-text_color_dark ">
+          <ProjectCardComponent />
+          <ProjectCardNameComponent />
+        </div>
       </section>
     </main>
   );

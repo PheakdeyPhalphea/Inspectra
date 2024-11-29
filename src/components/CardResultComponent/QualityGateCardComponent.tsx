@@ -7,7 +7,7 @@ export default function QualityCardComponent() {
       <div className="text-text_body_16 text-text_color_light rounded-tl-[20px] rounded-br-[20px]  bg-primary_color flex justify-center items-center text-center h-[40px] w-[150px]">
         Quality Gate
       </div>
-      <div className="w-full h-full my-5 px-5">
+      <div className="w-full h-full my-5 px-10">
         <div className="flex text-center items-center justify-between my-5">
           <div className="flex">
             <div className="w-[25px] h-[25px] flex items-center justify-center rounded-[5px] bg-primary_color">

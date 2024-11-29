@@ -133,37 +133,80 @@ export const facetsData = {
         },
       ],
     },
-    {
-      property: "tags",
-      values: [],
-    },
   ],
   values: [
-   {
-     grade: "A",
-     result: "Excellent",
-     borderColor: "#B9FF66"
-   },
+    {
+      grade: "A",
+      result: "Excellent",
+      borderColor: "#B9FF66",
+    },
     {
       grade: "B",
       result: "Good",
-      borderColor: "#60935D"
+      borderColor: "#60935D",
     },
     {
       grade: "C",
       result: "Average",
-      borderColor: "#F7DC6F"
+      borderColor: "#F7DC6F",
     },
     {
       grade: "D",
       result: "Poor",
-      borderColor: "#F9B800"
+      borderColor: "#F9B800",
     },
     {
       grade: "F",
       result: "Fail",
-      borderColor: "#EA4335"
+      borderColor: "#EA4335",
     },
-
-  ]
+  ],
+  coverage: [
+    {
+      percent: "> 80%",
+      image: "/images/80percent.png",
+    },
+    {
+      percent: "70% - 80%",
+      image: "/images/70percent.png",
+    },
+    {
+      percent: "50% - 70%",
+      image: "/images/60percent.png",
+    },
+    {
+      percent: "30% - 50%",
+      image: "/images/40percent.png",
+    },
+    {
+      percent: "< 30%",
+      image: "/images/20percent.png",
+    },
+  ],
+  duplication: [
+    {
+      percent: "< 3%",
+      image: "/images/3percent.png",
+    },
+    {
+      percent: "3% - 5%",
+      image: "/images/3to5percent.png",
+    },
+    {
+      percent: "5% - 10%",
+      image: "/images/5to10percent.png",
+    },
+    {
+      percent: "10% - 20%",
+      image: "/images/10to20percent.png",
+    },
+    {
+      percent: "> 20%",
+      image: "/images/over20percent.png",
+    },
+    {
+      percent: "No Data",
+      image: "",
+    },
+  ],
 };
