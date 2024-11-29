@@ -9,7 +9,7 @@ import { MdEmail } from "react-icons/md";
 export default function FooterComponent() {
   const { theme } = useTheme();
   return (
-    <footer className="w-[95%] my-5 md:w-[98%] rounded-lg bg-card_color_light dark:bg-card_color_dark  mx-auto">
+    <footer className="w-[95%] my-5 md:w-[98%] z-20 rounded-[20px] bg-card_color_light dark:bg-card_color_dark  mx-auto">
       <div className="w-[95%] flex flex-col md:flex-row justify-between mx-auto space-y-5 md:space-y-0">
         {/* Section 1: Logo */}
         <section className="w-full md:w-[30%]">
