@@ -1,16 +1,23 @@
-import {cyberApi} from "@/redux/api"
+import { cyberApi } from "@/redux/api";
 
 export const feedbackApi = cyberApi.injectEndpoints({
-    endpoints: (builder) => ({
-      // feedback user
-      createUserFeedback: builder.mutation({
-        query: ({ message }) => ({
-          url: `feedback`,
-          method: "POST",
-          body: { message },
-        }),
+  endpoints: (builder) => ({
+    // create user feedback
+    createUserFeedback: builder.mutation({
+      query: ({ message }) => ({
+        url: `feedback`,
+        method: "POST",
+        body: { message },
       }),
     }),
-  });
-  
-  export const { useCreateUserFeedbackMutation } = feedbackApi;
+
+    // get user feedback
+    getAllUserFeedback: builder.query<any, {}>({
+      query: () => ({
+        url: `/feedback`,
+      }),
+    }),
+  }),
+});
+
+export const { useCreateUserFeedbackMutation, useGetAllUserFeedbackQuery } = feedbackApi;
