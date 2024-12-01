@@ -4,6 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import FormLoginComponent from "@/components/FromLoginComponent/FormLoginComponent";
+import Link from "next/link";
 
 export default function page() {
   return (
@@ -53,9 +54,9 @@ export default function page() {
               </p>
             </div>
             {/* Close icon */}
-            <div className="text-text_header_34 items-center">
+            <Link href={"/"} className="text-text_header_34 items-center">
               <RxCross2 className="h-full" />
-            </div>
+            </Link>
           </div>
 
           {/* form section */}

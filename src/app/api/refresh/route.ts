@@ -26,7 +26,7 @@ export async function POST() {
 
   // if the refresh token is found, make a POST request to the Our API
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}auth/refresh`,
+    `${process.env.NEXT_PUBLIC_API_URL}auth/refreshToken`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },

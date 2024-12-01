@@ -8,7 +8,7 @@ import { setAssessToken } from "@/redux/feature/Auth/authSlice";
 
 // Setting up prepareHeaders to include the token in the headers
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
+  baseUrl: process.env.NEXT_PUBLIC_API_URL,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
 
@@ -22,7 +22,6 @@ const baseQuery = fetchBaseQuery({
 });
 
 const baseQueryWithReAuth = async (args: any, api: any, extraOptions: any) => {
-  // check result of each query. if it's a 401, we'll try to re-authenticate
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
@@ -31,24 +30,19 @@ const baseQueryWithReAuth = async (args: any, api: any, extraOptions: any) => {
       {
         method: "POST",
         credentials: "include",
-      },
+      }
     );
 
     if (res.ok) {
       const data = await res.json();
-
-      api.dispatch(setAssessToken(data.accessToken));
-      // re-run the query with the new token
+      api.dispatch(setAssessToken(data.accessToken)); // Dispatch the new token
+      // Re-run the query with the new token
       result = await baseQuery(args, api, extraOptions);
     } else {
-      const res = await fetch(
-        "${process.env.NEXT_PUBLIC_BASE_URL_LOCALHOST}logout",
-        {
-          method: "POST",
-          credentials: "include",
-        },
-      );
-      const data = await res.json();
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_LOCALHOST}logout`, {
+        method: "POST",
+        credentials: "include",
+      });
     }
   }
 
@@ -59,5 +53,4 @@ export const cyberApi = createApi({
   reducerPath: "cyberApi",
   baseQuery: baseQueryWithReAuth,
   endpoints: () => ({}),
-
 });

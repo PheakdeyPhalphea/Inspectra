@@ -1,11 +1,16 @@
 "use client";
-import React from "react";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { setUserUUID } from "@/redux/feature/userSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { FormValues } from "@/types/FormType";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
-
+import * as Yup from "yup";
 export default function FormLoginComponent() {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -19,12 +24,35 @@ export default function FormLoginComponent() {
     // Toggle password visibility
   };
 
-  const initialValues = {
+  const initialValues: FormValues = {
     email: "",
     password: "",
   };
 
-  const handleSubmit = (values: any) => {};
+  const handleSubmit = async (values: FormValues) => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL_LOCALHOST}/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
+      if (res.status === 200) {
+        const data = await res.json();
+        const userUUid = data?.user?.data?.uuid;
+        dispatch(setUserUUID(userUUid));
+        router.push("/");
+      } else {
+        setIsSubmitting(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Formik
@@ -101,7 +129,10 @@ export default function FormLoginComponent() {
           </p>
         </div>
         {/* Login Button */}
-        <button className="w-full py-3 bg-primary_color text-text_color_light font-semibold flex justify-center rounded-[10px]">
+        <button
+          type="submit"
+          className="w-full py-3 bg-primary_color text-text_color_light font-semibold flex justify-center rounded-[10px]"
+        >
           Log In
         </button>
       </Form>

@@ -22,7 +22,7 @@ export default function FeedbackComponent() {
       description: "Thank For FeedBack Our Team Will Review It",
       variant: "success",
     });
-    console.log(createUserFeedback({ message: feedback }));
+    createUserFeedback({ message: feedback });
   };
   return (
     <section className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">

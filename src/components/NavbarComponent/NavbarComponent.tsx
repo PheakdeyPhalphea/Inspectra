@@ -1,14 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
-import { IoMenu } from "react-icons/io5";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { navbarData } from "@/data/navbar";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
-import { navbarData } from "@/data/navbar";
 import { usePathname } from "next/navigation";
-
+import { useEffect, useState } from "react";
+import { IoMenu } from "react-icons/io5";
+import { useAppSelector } from "@/redux/hooks";
+import { useGetUserDetailQuery } from "@/redux/service/user";
 export default function NavbarComponent() {
+  const userUUID = useAppSelector((state) => state.user.uuid);
+  const {data} = useGetUserDetailQuery({ uuid: userUUID });
+  console.log(data)
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -21,6 +25,7 @@ export default function NavbarComponent() {
   if (!mounted) return null;
   const isRender = pathname === "/login" || pathname === "/register";
 
+  
   return (
     <nav className="w-full mx-auto z-40 backdrop-blur-2xl sticky top-0">
       <div className="w-[90%] mx-auto ">
