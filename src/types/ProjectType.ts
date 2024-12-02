@@ -1,34 +1,30 @@
-// types.ts
+export type CoverageItem = {
+  percent: string;
+  image: string;
+};
+
+export type DuplicationItem = {
+  percent: string;
+  image: string;
+};
+
 export type FacetValue = {
-    val: string;
-    count: number;
-  };
-  
-  export type Facet = {
-    property: string;
-    values: FacetValue[];
-  };
-  
-  export type Grade = {
+  val: string;
+  count: number;
+};
+
+export type FacetItem = {
+  property: string;
+  values: FacetValue[];
+};
+
+export type FacetsData = {
+  facets: FacetItem[];
+  coverage: CoverageItem[];
+  duplication: DuplicationItem[];
+  values: {
     grade: string;
     result: string;
     borderColor: string;
-  };
-  
-  export type CoverageItem = {
-    percent: string;
-    image: string;
-  };
-  
-  export type DuplicationItem = {
-    percent: string;
-    image: string;
-  };
-  
-  export type FacetsData = {
-    facets: Facet[];
-    values: Grade[];
-    coverage: CoverageItem[];
-    duplication: DuplicationItem[];
-  };
-  
+  }[];
+};

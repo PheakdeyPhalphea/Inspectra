@@ -1,8 +1,15 @@
 
 import React from 'react';
+import { Metadata } from 'next';
 import TeamComponent from '@/components/AboutUsComponent/TeamComponent';
 import MentorComponent from '@/components/AboutUsComponent/MentorComponent';
 import FeedbackComponent from '@/components/Feedback/FeedbackComponent';
+
+export const metadata: Metadata = {
+  title: "About Us - Inspectra",
+  description:
+    "Learn more about Inspectra, a white-box testing platform designed to review source code and identify security weaknesses. Discover our mission, values, and commitment to secure development.",
+};
 
 export default function page() {
 

@@ -11,18 +11,27 @@ export default function FeedbackComponent() {
     useCreateUserFeedbackMutation(); // waitin for test api
   const [feedback, setFeedback] = useState(""); // State to capture feedback
 
-  const handleFeedbackChange = (e: any) => {
+  const handleFeedbackChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setFeedback(e.target.value); // Update state on textarea change
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // Prevent page refresh on form submit
     setFeedback(""); // Clear the textarea after submission
-    toast({
-      description: "Thank For FeedBack Our Team Will Review It",
-      variant: "success",
-    });
-    console.log(createUserFeedback({ message: feedback }));
+    if (isSuccess) {
+      toast({
+        description: "Thank For FeedBack Our Team Will Review It",
+        variant: "success",
+      });
+      createUserFeedback({ message: feedback });
+    } else if (isError) {
+      toast({
+        description: "Failed to Submit Feedback",
+        variant: "error",
+      });
+    }
   };
   return (
     <section className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">

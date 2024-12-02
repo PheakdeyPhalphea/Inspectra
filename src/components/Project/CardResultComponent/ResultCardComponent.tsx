@@ -1,17 +1,12 @@
 import React from "react";
+
 import { facetsData } from "@/data/facets";
 import Image from "next/image";
-import {
-  FacetsData,
-  FacetValue,
-  CoverageItem,
-  DuplicationItem,
-  Grade,
-} from "@/types/ProjectType";
+import { FacetItem, DuplicationItem, FacetValue, CoverageItem } from "@/types/ProjectType";
 export default function ResultCardComponent() {
   return (
     <div>
-      {facetsData.facets.map((item: any, index: number) => {
+      {facetsData.facets.map((item: FacetItem, index: number) => {
         if (item.property === "Coverage") {
           return (
             <div
@@ -25,7 +20,7 @@ export default function ResultCardComponent() {
                 {facetsData.coverage.map(
                   (coverageItem: CoverageItem, coverageIndex: number) => (
                     <div
-                      key={`duplication-item-${coverageIndex}`}
+                      key={`coverage-item-${coverageIndex}`}
                       className="w-full h-full my-5 pr-5 pl-2"
                     >
                       <div className="flex text-center items-center justify-between my-5">
@@ -33,16 +28,15 @@ export default function ResultCardComponent() {
                         <div className="flex items-center justify-center">
                           {/* Conditionally Render Image */}
                           {coverageItem?.image ? (
-                            <div className="w-[50px] h-[50px]  flex items-center justify-center">
+                            <div className="w-[50px] h-[50px] flex items-center justify-center">
                               <Image
                                 width={50}
                                 height={50}
-                                alt="duplication"
+                                alt="coverage"
                                 src={coverageItem.image}
                               />
                             </div>
-                          ) : null}{" "}
-                          {/* Do not render anything if the image is not provided */}
+                          ) : null}
                           {/* Text */}
                           <p className="px-2 text-text_color_light dark:text-text_color_dark text-text_body_16">
                             {coverageItem?.percent || "No Data"}
@@ -95,8 +89,7 @@ export default function ResultCardComponent() {
                                 src={duplicationItem.image}
                               />
                             </div>
-                          ) : null}{" "}
-                          {/* Do not render anything if the image is not provided */}
+                          ) : null}
                           {/* Text */}
                           <p className="px-2 text-text_color_light dark:text-text_color_dark mt-2 text-text_body_16">
                             {duplicationItem?.percent || "No Data"}
@@ -124,7 +117,7 @@ export default function ResultCardComponent() {
                 {item.property}
               </div>
               <div className="w-full h-full my-2 px-10 py-2">
-                {item.values.map((value: FacetsData, id: number) => {
+                {item.values.map((value: FacetValue, id: number) => {
                   const gradeData = facetsData.values[id] || {};
                   return (
                     <div

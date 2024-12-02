@@ -9,14 +9,15 @@ export default function TeamComponent() {
     return (
         <div>
             <section className='relative my-[60px]'>
-                <div className='absolute top-0 -z-20 hidden md:block'>
+                <div className='absolute top-0 -z-20 hidden md:block w-full'>
                     {theme === "dark" ? (
                         <img
                             src="/images/about us background_white.png"
                             alt="bg-aboutus"
+                            className='object-cover w-[100%] h-[100%]'
                         />
                     ) : (
-                        <img src="/images/about us background.png" alt="bg-aboutus" />
+                        <img src="/images/about us background.png" alt="bg-aboutus" className='object-cover w-[100%] h-[100%]' />
                     )}
                 </div>
                 <div className='w-[90%] mx-auto text-center md:pt-20 lg:pt-24'>

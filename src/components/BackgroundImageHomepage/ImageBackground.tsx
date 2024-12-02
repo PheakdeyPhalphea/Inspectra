@@ -7,11 +7,11 @@ export default function ImageBackground() {
   const pathname = usePathname(); // Get the current path.
 
   // Hide images only on the '/aboutUs' page.
-  const isAboutUs = pathname === "/aboutUs" || pathname === "/useCase";
+  const isRender= pathname === "/aboutUs" || pathname === "/useCase" || pathname === "/login" || pathname === "/register";
 
   return (
     <>
-      {!isAboutUs && ( // Render images only if not on '/aboutUs'.
+      {!isRender && ( 
         <>
           <img
             src="/images/Ellipse-bg.png"

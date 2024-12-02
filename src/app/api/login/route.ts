@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
 
   const refreshToken = data?.data?.refreshToken || null;
   const accessToken = data?.data?.accessToken || null;
-  const user = data?.user || null;
+  const user = data || null;
 
   const cookieName = process.env?.COOKIE_REFRESH_TOKEN_NAME || "refresh_token";
   const serialized = serialize(cookieName, refreshToken, {
