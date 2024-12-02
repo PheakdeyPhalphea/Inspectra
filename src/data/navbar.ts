@@ -1,4 +1,3 @@
-import { link } from "fs";
 
 export const navbarData = [
   {
@@ -22,7 +21,7 @@ export const navbarData = [
     link: "/blog",
   },
   {
-    name: "AboutUS",
+    name: "About Us",
     link: "/aboutUs",
   }
 ];
