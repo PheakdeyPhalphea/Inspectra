@@ -19,7 +19,7 @@ export default function FeedbackComponent() {
     e.preventDefault(); // Prevent page refresh on form submit
     setFeedback(""); // Clear the textarea after submission
     toast({
-      description: "Thank For FeedBack Our Team Will Review It",
+      description: "Thanks for your feedback, Our Team will review Iit",
       variant: "success",
     });
     const response = createUserFeedback({ message: feedback });
@@ -36,7 +36,7 @@ export default function FeedbackComponent() {
         </div>
 
         {/* Description */}
-        <p className="text-text_body_16 text-text_color_desc_light font-normal">
+        <p className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark font-normal">
           Feel Free to Share Your Experience with Us and other Users
         </p>
 

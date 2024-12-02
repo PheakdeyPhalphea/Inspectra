@@ -88,7 +88,7 @@ export default function Home() {
       </section>
 
       {/* FAQs section */}
-      <section className="w-full text-center lg:my-[60px]">
+      <section className="w-full text-center my-[60px]">
         <Link href="/faq">
           {" "}
           <p className="text-text_header_34 px-2 inline rounded-tl-[20px] text-text_color_light rounded-br-[20px] bg-primary_color font-semibold">
