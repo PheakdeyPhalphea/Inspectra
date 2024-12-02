@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import React, { useEffect, useState } from "react";
 import {
     Accordion,
     AccordionContent,
@@ -19,70 +19,70 @@ type DropdownMenuProps = {
     onMenuClick: (question: string, answer?: string) => void;
 };
 
-// Example data with proper typing
-const accordionData: AccordionItemData[] = [
-    {
-        id: "item-1",
-        question: "Introduction",
-        answers: [
-            "Overview",
-            "Key Features",
-            "Use Cases",
-            "Why Choose Inspectra"
-        ],
-    },
-    {
-        id: "item-2",
-        question: "Getting Started",
-        answers: [
-            "Quick Start Guide",
-            "First Scan",
-        ],
-    },
-    {
-        id: "item-3",
-        question: "User Guide",
-        answers: [
-            "Scanning Projects",
-            "Understanding Results",
-            "Exporting Reports"
-        ],
-    },
-    {
-        id: "item-4",
-        question: "Technical Guide",
-        answers: [
-            "Framework and Langauges",
-            "Integrations",
-            "Database Support",
-            "Security Standard"
-        ],
-    },
-];
+// Define types for API responses
+interface DocumentCategory {
+    uuid: string;
+    name: string;
+}
+
+interface DocumentSubmenu {
+    uuid: string;
+    documentCategoryName: string;
+    title: string;
+}
 
 export default function DropdownMenu({ onMenuClick }: DropdownMenuProps) {
+    const [categories, setCategories] = useState<DocumentCategory[]>([]);
+    const [loadingCategories, setLoadingCategories] = useState(true); // For category loading state
+
+    // Fetch all categories on component mount
+    useEffect(() => {
+        async function fetchCategories() {
+            try {
+                const response = await fetch(
+                    "http://136.228.158.126:4011/api/v1/document-category/page?page=0&size=25"
+                );
+                const data = await response.json();
+                setCategories(data.content);
+            } catch (error) {
+                console.error("Failed to fetch categories:", error);
+            } finally {
+                setLoadingCategories(false);
+            }
+        }
+        fetchCategories();
+    }, []);
+
+    if (loadingCategories) return <div>Loading...</div>;
+
     return (
         <Accordion type="single" collapsible>
-        {accordionData.map((item) => (
-            <AccordionItem key={item.id} value={item.id} className="p-1">
-                <AccordionTrigger className="text-[18px] leading-4" onClick={() => onMenuClick(item.question)}>
-                    {item.question}
-                </AccordionTrigger>
-                <AccordionContent>
-                    <ul className="ml-2 leading-9 text-text_body_16 text-text_color_desc_light">
-                        {item.answers.map((answer, index) => (
-                            <li 
-                                key={index} 
-                                className="hover:text-text_color_light flex items-center cursor-pointer transition ease-in-out delay-150 hover:border-l-2 p-2"
-                                onClick={() => onMenuClick(item.question, answer)}
-                                >
-                                {answer}
-                            </li>
-                        ))}
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        ))}
-    </Accordion>
+            {categories.map((category) => (
+                <AccordionItem key={category.uuid} value={category.uuid} className="p-1">
+                    <AccordionTrigger className="text-[18px] leading-4">
+                        {category.name}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        ds
+                    </AccordionContent>
+                </AccordionItem>
+            ))}
+        </Accordion>
     )
 }
+
+
+{/* <ul className="ml-2 leading-9 text-text_body_16 text-text_color_desc_light">
+    {subMenus
+        .filter((submenu) => submenu.documentCategoryName === category.uuid)
+        .map((submenu) => (
+            <li
+                key={submenu.uuid}
+                className="hover:text-text_color_light flex items-center cursor-pointer transition ease-in-out delay-150 hover:border-l-2 p-2"
+                onClick={() => onMenuClick(category.name, submenu.title)}
+            >
+                {submenu.title}
+            </li>
+        ))}
+</ul> */}
+
