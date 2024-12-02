@@ -7,25 +7,55 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
-import { useAppSelector } from "@/redux/hooks";
 import { useGetUserDetailQuery } from "@/redux/service/user";
+import { FaUser } from "react-icons/fa";
+import { IoIosArrowUp } from "react-icons/io";
+import { SiMicrodotblog } from "react-icons/si";
+import { TbScan } from "react-icons/tb";
+import { IoLogOutSharp } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarMenu,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+
 export default function NavbarComponent() {
-  const userUUID = useAppSelector((state) => state.user.uuid);
-  const {data} = useGetUserDetailQuery({ uuid: userUUID });
-  console.log(data)
+  const router = useRouter();
+
+  const [userUUID, setUserUUID] = useState("");
+
+  useEffect(() => {
+    setUserUUID(localStorage.getItem("userUUID") || "");
+  });
+
+  const { data: userData } = useGetUserDetailQuery({ uuid: userUUID });
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  // Only run the theme logic after component mounts
-  useEffect(() => {
-    setMounted(true); // Set mounted to true after the component has mounted
-  }, []);
 
-  // Don't render anything until the component has mounted
-  if (!mounted) return null;
+  const handleSignOut = () => {
+    fetch(process.env.NEXT_PUBLIC_BASE_URL_LOCALHOST + "/logout", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        localStorage.clear();
+        setUserUUID("");
+        router.push("/");
+      })
+      .catch((error) => {
+        console.error("Refresh Token error:", error);
+      });
+  };
+
   const isRender = pathname === "/login" || pathname === "/register";
 
-  
   return (
     <nav className="w-full mx-auto z-40 backdrop-blur-2xl sticky top-0">
       <div className="w-[90%] mx-auto ">
@@ -70,12 +100,94 @@ export default function NavbarComponent() {
                   )}
                 </button>
                 {/* Sign in button */}
-                <Link
-                  href="/login"
-                  className="text-text_color_dark bg-background_dark_mode dark:bg-background_light_mode dark:text-text_color_light rounded-tl-[20px] rounded-br-[20px] text-text_body_16  px-4 lg:px-5 py-2 lg:py-2.5 hidden lg:block"
-                >
-                  Sign in
-                </Link>
+                {userUUID === "" ? (
+                  <Link
+                    href="/login"
+                    className="text-text_color_dark bg-background_dark_mode dark:bg-background_light_mode dark:text-text_color_light rounded-tl-[20px] rounded-br-[20px] text-text_body_16  px-4 lg:px-5 py-2 lg:py-2.5 hidden lg:block"
+                  >
+                    Sign in
+                  </Link>
+                ) : (
+                  <Menubar>
+                    <MenubarMenu>
+                      <MenubarTrigger>
+                        <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
+                          <img
+                            src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${userData?.data?.profile}`}
+                            alt="Logo"
+                            width={50}
+                            height={50}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      </MenubarTrigger>
+                      <MenubarContent className="absolute -left-[295px]  w-[350px] p-5 rounded-[10px] border-none  bg-card_color_light dark:bg-background_dark_mode">
+                        <p className="text-text_color_light text-text_body_16 dark:text-text_color_dark">
+                          {userData?.data?.name}
+                        </p>
+                        <p className="text-text_color_desc_light text-[14px] dark:text-text_color_dark">
+                          {userData?.data?.email}
+                        </p>
+                        <hr className="my-5" />
+                        {/* Profile */}
+                        <button className="p-3 my-3  bg-[#F9FAFB] flex w-full justify-between items-center text-center ">
+                          <div className="flex items-center">
+                            <div className="flex items-center justify-center w-6 h-6">
+                              <FaUser className="w-full h-full text-text_title_20" />
+                            </div>
+                            <p className="mx-5 text-text_body_16">My Profile</p>
+                          </div>
+                          <div>
+                            <IoIosArrowUp className="rotate-90" />
+                          </div>
+                        </button>
+
+                        {/* Blog History */}
+                        <button className="p-3 my-3  bg-[#F9FAFB]  flex w-full justify-between items-center text-center">
+                          <div className="flex items-center">
+                            <div className="flex items-center justify-center w-6 h-6">
+                              <SiMicrodotblog className="w-full h-full text-text_title_20" />
+                            </div>
+                            <p className="mx-5 text-text_body_16">
+                              Blog History
+                            </p>
+                          </div>
+                          <div>
+                            <IoIosArrowUp className="rotate-90" />
+                          </div>
+                        </button>
+
+                        {/* Scan History */}
+                        <button className="p-3 my-3  bg-[#F9FAFB]  flex w-full justify-between items-center text-center">
+                          <div className="flex items-center">
+                            <div className="flex items-center justify-center w-6 h-6">
+                              <TbScan className="w-full h-full text-text_title_20" />
+                            </div>
+                            <p className="mx-5 text-text_body_16">
+                              Scan History
+                            </p>
+                          </div>
+                          <div>
+                            <IoIosArrowUp className="rotate-90" />
+                          </div>
+                        </button>
+
+                        {/* Log Out */}
+                        <button
+                          onClick={() => handleSignOut()}
+                          className="p-3 my-3  bg-[#F9FAFB]  flex w-full justify-between items-center text-center"
+                        >
+                          <div className="flex items-center">
+                            <div className="flex items-center justify-center w-6 h-6">
+                              <IoLogOutSharp className="w-full h-full " />
+                            </div>
+                            <p className="mx-5 text-text_body_16">Log Out</p>
+                          </div>
+                        </button>
+                      </MenubarContent>
+                    </MenubarMenu>
+                  </Menubar>
+                )}
                 {/* menu icon */}
                 <div className=" text-[25px] block lg:hidden ">
                   <Sheet>

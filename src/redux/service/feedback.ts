@@ -12,9 +12,10 @@ export const feedbackApi = cyberApi.injectEndpoints({
     }),
 
     // get user feedback
-    getAllUserFeedback: builder.query<any, {}>({
+    getAllUserFeedback: builder.query({
       query: () => ({
         url: `/feedback`,
+        providesTags: ["Feedback"],
       }),
     }),
   }),

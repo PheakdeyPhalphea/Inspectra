@@ -7,7 +7,6 @@ import { FaFacebook } from "react-icons/fa";
 import { useTheme } from "next-themes";
 import { MdEmail } from "react-icons/md";
 import { FeaturesFooter, SupportFooter } from "@/data/footer";
-import { features } from "process";
 import { usePathname } from "next/navigation";
 export default function FooterComponent() {
   const { theme } = useTheme();
@@ -63,7 +62,8 @@ export default function FooterComponent() {
                 </div>
                 <div className="mt-5">
                   {FeaturesFooter.map((featuresItem, index: number) => (
-                    <Link
+                    <Link 
+                      key={index}
                       className="my-3 block text-text_body_16 text-text_color_light dark:text-text_color_dark"
                       href={featuresItem.link}
                     >
@@ -81,6 +81,7 @@ export default function FooterComponent() {
                 <div className="mt-5">
                   {SupportFooter.map((featuresItem, index: number) => (
                     <Link
+                      key={index}
                       className="my-3 block text-text_body_16 text-text_color_light dark:text-text_color_dark"
                       href={featuresItem.link}
                     >

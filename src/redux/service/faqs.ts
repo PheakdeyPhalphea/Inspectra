@@ -3,7 +3,7 @@ import { cyberApi } from "@/redux/api";
 export const faqApi = cyberApi.injectEndpoints({
   endpoints: (builder) => ({
     // get user feedback
-    getAllFAQ: builder.query<any, {}>({
+    getAllFAQ: builder.query({
       query: () => ({
         url: `/faq`,
       }),

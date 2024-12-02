@@ -12,7 +12,7 @@ export default function page() {
       {/* secontion welcome */}
       <section className="h-full flex flex-col items-center justify-between w-[60%] bg-primary_color py-[40px] ">
         <div className="w-full px-[100px]">
-          <p className="text-[60px] font-semibold leading-[1.2]">
+          <p className="text-[60px] text-text_color_light font-semibold leading-[1.2]">
             Welcome to <br />
             <span className="font-normal">Inspectra</span>
           </p>
@@ -33,7 +33,7 @@ export default function page() {
       </section>
 
       {/* login section */}
-      <section className="h-full w-[40%] py-[40px] flex flex-col">
+      <section className="h-full w-[40%] bg-text_color_dark  py-[40px] flex flex-col">
         {/* title */}
         <div className="mx-[40px] flex flex-col h-full">
           {/* Logo and close icon */}
@@ -54,7 +54,7 @@ export default function page() {
               </p>
             </div>
             {/* Close icon */}
-            <Link href={"/"} className="text-text_header_34 items-center">
+            <Link href={"/"} className="text-text_header_34 text-text_color_light items-center">
               <RxCross2 className="h-full" />
             </Link>
           </div>
@@ -62,7 +62,7 @@ export default function page() {
           {/* form section */}
           <div className="h-full pt-[40px] flex flex-col justify-between ">
             {/* Title */}
-            <p className="text-text_header_34 font-semibold">Log In</p>
+            <p className="text-text_header_34 text-text_color_light font-semibold">Log In</p>
 
             <FormLoginComponent />
 

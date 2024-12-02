@@ -11,7 +11,7 @@ export default function ProjectCardNameComponent() {
       <hr className="my-5 dark:border-primary_color" />
       <p className=" my-2 text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark ">
         {" "}
-        Project's{" "}
+        Project&apos;s{" "}
         <span className="text-secondary_color truncate">
           {projectData.projectName}
         </span>{" "}
