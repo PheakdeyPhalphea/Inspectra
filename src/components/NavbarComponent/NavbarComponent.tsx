@@ -1,6 +1,6 @@
 "use client";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { navbarData } from "@/data/navbar";
+import { navbarData, navbarDataWithProfile } from "@/data/navbar";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -108,10 +108,10 @@ export default function NavbarComponent() {
                     Sign in
                   </Link>
                 ) : (
-                  <Menubar>
+                  <Menubar className="hidden md:block md:w-full md:h-full">
                     <MenubarMenu>
                       <MenubarTrigger>
-                        <div className="w-[40px] h-[40px] overflow-hidden rounded-full">
+                        <div className="  w-[40px] h-[40px] overflow-hidden rounded-full">
                           <img
                             src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${userData?.data?.profile}`}
                             alt="Logo"
@@ -130,7 +130,7 @@ export default function NavbarComponent() {
                         </p>
                         <hr className="my-5" />
                         {/* Profile */}
-                        <button className="p-3 my-3  bg-[#F9FAFB] flex w-full justify-between items-center text-center ">
+                        <button className="p-3 my-3     flex w-full justify-between items-center text-center ">
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
                               <FaUser className="w-full h-full text-text_title_20" />
@@ -143,7 +143,7 @@ export default function NavbarComponent() {
                         </button>
 
                         {/* Blog History */}
-                        <button className="p-3 my-3  bg-[#F9FAFB]  flex w-full justify-between items-center text-center">
+                        <button className="p-3 my-3    flex w-full justify-between items-center text-center">
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
                               <SiMicrodotblog className="w-full h-full text-text_title_20" />
@@ -158,7 +158,7 @@ export default function NavbarComponent() {
                         </button>
 
                         {/* Scan History */}
-                        <button className="p-3 my-3  bg-[#F9FAFB]  flex w-full justify-between items-center text-center">
+                        <button className="p-3 my-3    flex w-full justify-between items-center text-center">
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
                               <TbScan className="w-full h-full text-text_title_20" />
@@ -175,7 +175,7 @@ export default function NavbarComponent() {
                         {/* Log Out */}
                         <button
                           onClick={() => handleSignOut()}
-                          className="p-3 my-3  bg-[#F9FAFB]  flex w-full justify-between items-center text-center"
+                          className="p-3 my-3    flex w-full justify-between items-center text-center"
                         >
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
@@ -190,26 +190,86 @@ export default function NavbarComponent() {
                 )}
                 {/* menu icon */}
                 <div className=" text-[25px] block lg:hidden ">
-                  <Sheet>
-                    <SheetTrigger asChild>
-                      <IoMenu />
-                    </SheetTrigger>
-                    <SheetContent className="bg-background_light_mode dark:bg-background_dark_mode border-hidden">
-                      <ul className="  text-text_color_light dark:text-text_color_dark  text-text_body_16  justify-between space-y-4 flex flex-col">
-                        {navbarData.map((item, index: number) => (
-                          <Link key={index} href={item.link}>
-                            {pathname === item.link ? (
-                              <p className="text-secondary_color">
-                                {item?.name}
+                  {userUUID === "" ? (
+                    <Sheet>
+                      <SheetTrigger asChild>
+                        <IoMenu />
+                      </SheetTrigger>
+                      <SheetContent className="bg-background_light_mode dark:bg-background_dark_mode border-hidden">
+                        <ul className="  text-text_color_light dark:text-text_color_dark  text-text_body_16  justify-between space-y-4 flex flex-col">
+                          {navbarData.map((item, index: number) => (
+                            <Link key={index} href={item.link}>
+                              {pathname === item.link ? (
+                                <p className="text-secondary_color">
+                                  {item?.name}
+                                </p>
+                              ) : (
+                                <p>{item.name}</p>
+                              )}
+                            </Link>
+                          ))}
+                        </ul>
+                      </SheetContent>
+                    </Sheet>
+                  ) : (
+                    <Sheet>
+                      <SheetTrigger asChild>
+                        <IoMenu />
+                      </SheetTrigger>
+                      <SheetContent className="bg-background_light_mode dark:bg-background_dark_mode border-hidden">
+                        <ul className="  text-text_color_light dark:text-text_color_dark  text-text_body_16  justify-between space-y-4 flex flex-col">
+                          <div className="flex">
+                            <div className=" w-[40px] h-[40px] overflow-hidden rounded-full">
+                              <img
+                                src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${userData?.data?.profile}`}
+                                alt="Logo"
+                                width={50}
+                                height={50}
+                                className="object-cover w-full h-full"
+                              />
+                            </div>
+                            <div className="px-5">
+                              <p className="text-text_color_light text-text_body_16 dark:text-text_color_dark">
+                                {userData?.data?.name}
                               </p>
-                            ) : (
-                              <p>{item.name}</p>
-                            )}
-                          </Link>
-                        ))}
-                      </ul>
-                    </SheetContent>
-                  </Sheet>
+                              <p className="text-text_color_desc_light text-[14px] dark:text-text_color_dark">
+                                {userData?.data?.email}
+                              </p>
+                            </div>
+                          </div>
+                          <hr className="text-text_color_light" />
+                          {navbarDataWithProfile.map((item, index: number) => (
+                            <Link key={index} href={item.link}>
+                              {pathname === item.link ? (
+                                <p className="text-secondary_color">
+                                  {item?.name}
+                                </p>
+                              ) : (
+                                <p>{item.name}</p>
+                              )}
+                            </Link>
+                          ))}
+                          {navbarData.map((item, index: number) => (
+                            <Link key={index} href={item.link}>
+                              {pathname === item.link ? (
+                                <p className="text-secondary_color">
+                                  {item?.name}
+                                </p>
+                              ) : (
+                                <p>{item.name}</p>
+                              )}
+                            </Link>
+                          ))}
+                          <button
+                            onClick={() => handleSignOut()}
+                            className="text-start"
+                          >
+                            Log Out
+                          </button>
+                        </ul>
+                      </SheetContent>
+                    </Sheet>
+                  )}
                 </div>
               </div>
             </div>

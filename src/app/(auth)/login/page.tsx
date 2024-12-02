@@ -8,9 +8,9 @@ import Link from "next/link";
 
 export default function page() {
   return (
-    <main className="h-screen w-full mx-auto flex ">
+    <main className="h-screen relative  w-full mx-auto flex ">
       {/* secontion welcome */}
-      <section className="h-full flex flex-col items-center justify-between w-[60%] bg-primary_color py-[40px] ">
+      <section className=" hidden  h-full xl:flex flex-col items-center justify-between w-[60%] bg-primary_color py-[40px] ">
         <div className="w-full px-[100px]">
           <p className="text-[60px] text-text_color_light font-semibold leading-[1.2]">
             Welcome to <br />
@@ -33,9 +33,21 @@ export default function page() {
       </section>
 
       {/* login section */}
-      <section className="h-full w-[40%] bg-text_color_dark  py-[40px] flex flex-col">
-        {/* title */}
-        <div className="mx-[40px] flex flex-col h-full">
+      <section className="h-full w-full xl:w-[40%] relative bg-text_color_dark  xl:py-[40px] flex flex-col ">
+        {/* welcome title */}
+
+        <div className="w-full md:block md:text-center  md:h-[10%] md:mt-auto   xl:hidden">
+          <p className="text-[60px] text-text_color_light font-semibold leading-[1.2]">
+            Welcome to <br />
+            <span className="font-normal">Inspectra</span>
+          </p>
+          <p className="text-text_body_16 text-ascend_color leading-[1.4] mt-2">
+            Login to access your account
+          </p>
+        </div>
+
+        {/* form */}
+        <div className="mx-[40px] md:w-[60%] md:h-[60%]  md:my-auto md:mx-auto flex flex-col xl:h-full">
           {/* Logo and close icon */}
           <div className="w-full flex justify-between">
             {/* Logo and name */}
@@ -54,7 +66,10 @@ export default function page() {
               </p>
             </div>
             {/* Close icon */}
-            <Link href={"/"} className="text-text_header_34 text-text_color_light items-center">
+            <Link
+              href={"/"}
+              className="text-text_header_34 text-text_color_light items-center"
+            >
               <RxCross2 className="h-full" />
             </Link>
           </div>
@@ -62,7 +77,9 @@ export default function page() {
           {/* form section */}
           <div className="h-full pt-[40px] flex flex-col justify-between ">
             {/* Title */}
-            <p className="text-text_header_34 text-text_color_light font-semibold">Log In</p>
+            <p className="text-text_header_34 text-text_color_light font-semibold">
+              Log In
+            </p>
 
             <FormLoginComponent />
 
