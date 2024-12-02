@@ -3,7 +3,7 @@
 import React from 'react'
 import { useTheme } from "next-themes";
 import { teamData } from '@/data/team';
-import  { AboutUs, SocialMedia}  from '@/types/AboutUS';
+import { AboutUs, SocialMedia } from '@/types/AboutUs';
 import Link from 'next/link';
 
 export default function TeamComponent() {

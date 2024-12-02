@@ -13,7 +13,6 @@ export default function BlogComponent() {
 
     return (
         <div>
-
             {/* blog card */}
             <section>
                 {blogList?.map((blog: Blog, index: number) => (
