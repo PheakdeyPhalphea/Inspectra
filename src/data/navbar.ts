@@ -1,3 +1,5 @@
+import { link } from "fs";
+
 export const navbarData = [
   {
     name: "Home",
@@ -19,6 +21,10 @@ export const navbarData = [
     name: "Blog",
     link: "/blog",
   },
+  {
+    name: "AboutUS",
+    link: "/aboutUs",
+  }
 ];
 
 export const navbarDataWithProfile = [
