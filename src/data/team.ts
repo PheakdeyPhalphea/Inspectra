@@ -1,19 +1,7 @@
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-type SocialMedia = {
-  platform: string;
-  icon: React.ElementType;
-  link: string;
-};
-
-type Team = {
-  name: string;
-  image: string;
-  socialMedia: SocialMedia[];
-};
-
-export const teamData: Team[] = [
+export const teamData = [
   {
     name: "Phiv Lyhou",
     image: "/images/lyhou.jpg",

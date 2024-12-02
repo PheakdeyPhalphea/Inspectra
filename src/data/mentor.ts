@@ -1,19 +1,7 @@
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-type SocialMedia = {
-  platform: string;
-  icon: React.ElementType;
-  link: string;
-};
-
-type Mentor = {
-  name: string;
-  image: string;
-  socialMedia: SocialMedia[];
-};
-
-export const mentorData: Mentor[] = [
+export const mentorData = [
   {
     name: "Kim Chansokpheng",
     image: "/images/Cher-Pheng-Remove-BG.png",

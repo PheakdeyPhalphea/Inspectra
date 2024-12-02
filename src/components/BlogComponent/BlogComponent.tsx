@@ -1,65 +1,72 @@
+'use client'
+
 import React from 'react'
-import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from "@/components/ui/pagination"
+import { FaCalendarAlt, FaEye, FaCommentDots } from "react-icons/fa";
+import { FaHandsClapping } from "react-icons/fa6";
+import { Blog } from '@/types/Blog';
+import { useGetAllBlogQuery } from '@/redux/service/blog';
+import { convertToDayMonthYear } from "@/lib/utils";
 
 export default function BlogComponent() {
+    const { data: blogData } = useGetAllBlogQuery({ page: 0, pageSize: 10 });
+    const blogList = blogData?.content;
+
     return (
         <div>
 
             {/* blog card */}
             <section>
-                <div className='flex justify-between items-center border border-t-text_color_desc_light dark:border-t-text_color_desc_dark'>
-                    <div className='flex flex-col gap-3 bg-red-300'>
-                        <div>
-                            <img src="" alt="" />
-                            <p>Name</p>
-                        </div>
-                        <p>title</p>
-                        <p>desc</p>
-                        <div className='flex gap-3'>
-                        <div>
-                        icon
-                        <p></p>
-                    </div>
-                        </div>
-                    </div>
-                   
-                </div>
-            </section>
+                {blogList?.map((blog: Blog, index: number) => (
+                    <div key={index} className='flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center border-b border-b-text_color_desc_light dark:border-b-text_color_desc_dark pb-5 lg:pb-0'>
+                        <div className='flex flex-col gap-3 lg:w-[55%]'>
 
-            {/* pagination section */}
-            <section>
-                <Pagination>
-                    <PaginationContent>
-                        <PaginationItem>
-                            <PaginationPrevious href="#" />
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">1</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#" isActive>
-                                2
-                            </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">3</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationEllipsis />
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationNext href="#" />
-                        </PaginationItem>
-                    </PaginationContent>
-                </Pagination>
+                            {/* profile */}
+                            <div className='flex gap-3 items-center'>
+                                <div className='w-[50px] h-[50px] rounded-full overflow-hidden'>
+                                    <img className='w-full h-full object-cover' src={blog?.user?.profile} alt="profile" />
+                                </div>
+                                <p className='text-text_color_desc_light dark:text-text_color_desc_dark'>{blog?.user?.firstName} {blog?.user?.lastName}</p>
+                            </div>
+
+                            {/* title */}
+                            <p className='text-text_title_20 text-text_color_light dark:text-text_color_dark'>{blog?.title}</p>
+
+                            {/* description */}
+                            <p className='text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark line-clamp-2'>{blog?.description}</p>
+
+                            {/* created at */}
+                            <div className='flex gap-5 mb-5'>
+                                <div className='flex gap-2 items-center'>
+                                    <FaCalendarAlt className='text-text_color_desc_light dark:text-text_color_desc_dark' />
+                                    <p>{convertToDayMonthYear(blog?.createdAt)}</p>
+                                </div>
+
+                                {/* view */}
+                                <div className='flex gap-2 items-center'>
+                                    <FaEye className='text-text_color_desc_light dark:text-text_color_desc_dark' />
+                                    <p>{blog?.viewsCount}</p>
+                                </div>
+
+                                {/* like */}
+                                <div className='flex gap-2 items-center'>
+                                    <FaHandsClapping className='text-text_color_desc_light dark:text-text_color_desc_dark' />
+                                    <p>{blog?.likesCount}</p>
+                                </div>
+
+                                {/* comment */}
+                                <div className='flex gap-2 items-center'>
+                                    <FaCommentDots className='text-text_color_desc_light dark:text-text_color_desc_dark' />
+                                    <p>{blog?.countComments}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* thumbnail */}
+                        <div>
+                            <img className='w-full h-full object-cover rounded-xl' src={blog?.thumbnail[0]} alt="thumbnail" />
+                        </div>
+                    </div>
+                ))}
             </section>
         </div>
     )
