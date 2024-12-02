@@ -1,12 +1,14 @@
-export type User = {
+// Define the User type
+type User = {
     uuid: string;
     firstName: string;
     lastName: string;
-    profile: string;
+    profile: string ;
     bio: string;
-};
-
-export type Blog = {
+  };
+  
+  // Define the Content type
+export  type Content = {
     uuid: string;
     title: string;
     likesCount: number;
@@ -14,8 +16,14 @@ export type Blog = {
     countComments: number;
     isVerified: boolean;
     description: string;
-    thumbnail: string[];
-    user: User;
-    createdAt: string;
-    lastModifiedAt: string;
-};
+    thumbnail: string[]; // Array of URLs
+    user: User; // Nested User type
+    createdAt: string; // ISO date string
+    lastModifiedAt: string; // ISO date string
+  };
+  
+  // Define the Response type
+ export type Blog = {
+    content: Content[];
+  };
+  

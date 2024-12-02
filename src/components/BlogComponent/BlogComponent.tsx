@@ -3,19 +3,18 @@
 import React from 'react'
 import { FaCalendarAlt, FaEye, FaCommentDots } from "react-icons/fa";
 import { FaHandsClapping } from "react-icons/fa6";
-import { Blog } from '@/types/Blog';
+import { Content } from '@/types/Blog';
 import { useGetAllBlogQuery } from '@/redux/service/blog';
 import { convertToDayMonthYear } from "@/lib/utils";
 
 export default function BlogComponent() {
     const { data: blogData } = useGetAllBlogQuery({ page: 0, pageSize: 10 });
     const blogList = blogData?.content;
-
     return (
         <div>
             {/* blog card */}
             <section>
-                {blogList?.map((blog: Blog, index: number) => (
+                {blogList?.map((blog: Content, index: number) => (
                     <div key={index} className='flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center border-b border-b-text_color_desc_light dark:border-b-text_color_desc_dark pb-5 lg:pb-0'>
                         <div className='flex flex-col gap-3 lg:w-[55%]'>
 
