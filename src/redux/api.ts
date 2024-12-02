@@ -22,7 +22,7 @@ const baseQuery = fetchBaseQuery({
     return headers;
   },
 });
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const baseQueryWithReAuth = async (args: any, api: any, extraOptions: any) => {
   let result = await baseQuery(args, api, extraOptions);
 

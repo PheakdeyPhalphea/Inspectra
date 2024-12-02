@@ -2,9 +2,10 @@
 
 import React from 'react'
 import { useTheme } from "next-themes";
-import { AboutUs, SocialMedia } from '@/types/AboutUS'
+
 import { mentorData } from '@/data/mentor';
 import Link from 'next/link';
+import { AboutUs, SocialMedia } from '@/types/AboutUs';
 
 export default function MentorComponent() {
   const { theme } = useTheme();

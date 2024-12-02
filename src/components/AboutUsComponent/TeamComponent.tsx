@@ -3,8 +3,8 @@
 import React from 'react'
 import { useTheme } from "next-themes";
 import { teamData } from '@/data/team';
-import { AboutUs, SocialMedia } from '@/types/AboutUs';
 import Link from 'next/link';
+import { AboutUs, SocialMedia } from '@/types/AboutUs';
 
 export default function TeamComponent() {
     const { theme } = useTheme();

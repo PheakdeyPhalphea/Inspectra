@@ -8,7 +8,7 @@ type User = {
   };
   
   // Define the Content type
-export  type Content = {
+export  type Blog = {
     uuid: string;
     title: string;
     likesCount: number;
@@ -22,8 +22,4 @@ export  type Content = {
     lastModifiedAt: string; // ISO date string
   };
   
-  // Define the Response type
- export type Blog = {
-    content: Content[];
-  };
   
