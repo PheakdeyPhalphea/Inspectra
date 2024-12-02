@@ -1,19 +1,7 @@
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-type SocialMedia = {
-  platform: string;
-  icon: React.ElementType;
-  link: string;
-};
-
-type Team = {
-  name: string;
-  image: string;
-  socialMedia: SocialMedia[];
-};
-
-export const teamData: Team[] = [
+export const teamData = [
   {
     name: "Phiv Lyhou",
     image: "/images/lyhou.jpg",
@@ -21,22 +9,22 @@ export const teamData: Team[] = [
       {
         platform: "GitHub",
         icon: FaGithub, 
-        link: "https://github.com/kimchansokpheng",
+        link: "https://github.com/lyhou123",
       },
       {
         platform: "Telegram",
         icon: FaTelegramPlane,
-        link: "https://t.me/kimchansokpheng",
+        link: "https://t.me/phivlyhou",
       },
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/kim-chansokpheng-0b3b0b1a4/",
+        link: "https://www.linkedin.com/in/phiv-lyhou-870447299/",
       },
       {
         platform: "Email",
         icon: MdEmail,
-        link: "mailto:kim.chansokpheng@example.com",
+        link: "mailto:lyhou282@gmail.com",
       },
     ],
   },
@@ -47,22 +35,22 @@ export const teamData: Team[] = [
       {
         platform: "GitHub",
         icon: FaGithub, 
-        link: "https://github.com/kaykeo",
+        link: "https://github.com/HomPheakakvotey",
       },
       {
         platform: "Telegram",
         icon: FaTelegramPlane,
-        link: "https://t.me/kaykeo",
+        link: "https://t.me/vvotey",
       },
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/kaykeo-0b3b0b1a4/",
+        link: "https://www.linkedin.com/in/hom-pheakakvotey-2285a6244",
       },
       {
         platform: "Email",
         icon: MdEmail,
-        link: "mailto:kaykeo@example.com",
+        link: "mailto:voteyhom@gmail.com",
       },
     ],
   },
@@ -83,7 +71,7 @@ export const teamData: Team[] = [
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/helen-0b3b0b1a4/",
+        link: "https://www.linkedin.com/in/helen-leang-34875533b/",
       },
       {
         platform: "Email",
@@ -99,22 +87,22 @@ export const teamData: Team[] = [
       {
         platform: "GitHub",
         icon: FaGithub, 
-        link: "https://github.com/kaykeo",
+        link: "https://github.com/PheakdeyPhalphea",
       },
       {
         platform: "Telegram",
         icon: FaTelegramPlane,
-        link: "https://t.me/kaykeo",
+        link: "https://t.me/PhalPheaPheakdey",
       },
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/kaykeo-0b3b0b1a4/",
+        link: "https://www.linkedin.com/in/phalphea-pheakdey?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       },
       {
         platform: "Email",
         icon: MdEmail,
-        link: "mailto:kaykeo@example.com",
+        link: "mailto:phalpheapheakdey@gmail.com",
       },
     ],
   },
@@ -125,22 +113,22 @@ export const teamData: Team[] = [
       {
         platform: "GitHub",
         icon: FaGithub, 
-        link: "https://github.com/kaykeo",
+        link: "https://github.com/ingdavann",
       },
       {
         platform: "Telegram",
         icon: FaTelegramPlane,
-        link: "https://t.me/kaykeo",
+        link: "https://t.me/ingdavann",
       },
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/kaykeo-0b3b0b1a4/",
+        link: "http://www.linkedin.com/in/ing-davann-0617b32a3",
       },
       {
         platform: "Email",
         icon: MdEmail,
-        link: "mailto:kaykeo@example.com",
+        link: "mailto:ingdavann4444@gmail.com",
       },
     ],
   },

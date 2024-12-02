@@ -44,7 +44,7 @@ export default function FeedbackComponent() {
         </div>
 
         {/* Description */}
-        <p className="text-text_body_16 text-text_color_desc_light font-normal">
+        <p className="text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark font-normal">
           Feel Free to Share Your Experience with Us and other Users
         </p>
 

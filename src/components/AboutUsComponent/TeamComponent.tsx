@@ -3,6 +3,8 @@
 import React from 'react'
 import { useTheme } from "next-themes";
 import { teamData } from '@/data/team';
+import  { AboutUs, SocialMedia}  from '@/types/AboutUS';
+import Link from 'next/link';
 
 export default function TeamComponent() {
     const { theme } = useTheme();
@@ -33,7 +35,7 @@ export default function TeamComponent() {
                     {/* teams card */}
                     <div>
                         <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between gap-10">
-                            {teamData.map((team, index) => (
+                            {teamData.map((team: AboutUs, index) => (
                                 <div
                                     key={index}
                                     className={`relative ${(index + 1) % 2 === 0 ? "lg:pt-10" : "" // Add padding-top for even indices
@@ -55,8 +57,8 @@ export default function TeamComponent() {
 
                                     {/* Social Media Links */}
                                     <div className="flex justify-center space-x-4">
-                                        {team.socialMedia.map((social, idx) => (
-                                            <a
+                                        {team.socialMedia.map((social: SocialMedia, idx) => (
+                                            <Link
                                                 key={idx}
                                                 href={social.link}
                                                 target="_blank"
@@ -65,7 +67,7 @@ export default function TeamComponent() {
                                                 aria-label={`Link to ${team.name}'s ${social.platform}`}
                                             >
                                                 <social.icon className="w-6 h-6 text-text_color_desc_dark hover:text-text_color_light dark:hover:text-primary_color transition-colors duration-200" />
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>

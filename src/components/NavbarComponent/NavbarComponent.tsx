@@ -208,6 +208,9 @@ export default function NavbarComponent() {
                               )}
                             </Link>
                           ))}
+                          <Link href="/login">
+                            <p>Sign in</p>
+                          </Link>
                         </ul>
                       </SheetContent>
                     </Sheet>

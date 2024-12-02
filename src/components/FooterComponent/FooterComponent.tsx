@@ -147,28 +147,36 @@ export default function FooterComponent() {
             {/* Social Links Section */}
             <section className="w-full md:w-1/2 grid grid-cols-2 gap-3 md:flex md:flex-row justify-end items-center text-text_color_desc_light dark:text-text_color_desc_dark mx-auto">
               {/* GitHub Card */}
-              <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-                <FaGithub className="w-5 h-5" />
-                <span>GitHub</span>
-              </div>
+              <Link target="blank" href={"https://github.com/MuyleangIng"}>
+                <button className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+                  <FaGithub className="w-5 h-5" />
+                  <span>GitHub</span>
+                </button>
+              </Link>
 
               {/* Facebook Card */}
-              <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-                <FaFacebook className="w-5 h-5" />
-                <span>Facebook</span>
-              </div>
+              <Link target="blank" href={"https://www.facebook.com/share/1XTYkShkpg/?mibextid=LQQJ4d"}>
+                <button className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+                  <FaFacebook className="w-5 h-5" />
+                  <span>Facebook</span>
+                </button>
+              </Link>
 
               {/* Telegram Card */}
-              <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-                <FaTelegram className="w-5 h-5" />
-                <span>Telegram</span>
-              </div>
+              <Link target="blank" href={"https://t.me/istadkh"}>
+                <button className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+                  <FaTelegram className="w-5 h-5" />
+                  <span>Telegram</span>
+                </button>
+              </Link>
 
               {/* Email Card */}
-              <div className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
-                <MdEmail className="w-5 h-5" />
-                <span>Email</span>
-              </div>
+              <Link target="blank" href={"mailto:info.istad@gmail.com"}>
+                <button className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
+                  <MdEmail className="w-5 h-5" />
+                  <span>Email</span>
+                </button>
+              </Link>
             </section>
           </section>
         </div>

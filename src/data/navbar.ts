@@ -19,14 +19,6 @@ export const navbarData = [
     name: "Blog",
     link: "/blog",
   },
-  {
-    name: "Sign in",
-    link: "/login",
-  },
-  {
-    name: "Register",
-    link: "/signup",
-  },
 ];
 
 export const navbarDataWithProfile = [
