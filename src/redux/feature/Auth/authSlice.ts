@@ -9,11 +9,11 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAssessToken(state, action: PayloadAction<string>) {
+    setAccessToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
     },
   },
 });
 
-export const { setAssessToken } = authSlice.actions;
+export const { setAccessToken } = authSlice.actions;
 export default authSlice.reducer;

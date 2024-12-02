@@ -49,8 +49,8 @@ export async function POST() {
   // Parse the response body to get the data
   const data = await response.json();
   console.log("Data", data);
-  const refresh = data?.payload?.refreshToken || null;
-  const access = data?.payload?.accessToken || null;
+  const refresh = data?.data?.refreshToken || null;
+  const access = data?.data?.accessToken || null;
 
   // Serialize the refresh token and set it as a cookie with
   // (httpOnly, secure, path, and sameSite options) in the response headers to the client-side
