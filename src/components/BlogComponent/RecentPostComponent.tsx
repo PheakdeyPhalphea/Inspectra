@@ -11,7 +11,7 @@ export default function RecentPostComponent() {
     const blogList = blogData?.content.slice(0, 4);
 
     return (
-        <div>
+        <div className='py-3'>
             <p className='text-text_title_20 text-text_color_desc_light dark: dark:text-text_color_desc_dark'>Recent Posts</p>
             <div className='py-3 flex flex-col gap-3'>
                 {blogList?.map((blog: Blog, index: number) => (
@@ -19,7 +19,7 @@ export default function RecentPostComponent() {
                         <div className='w-[200px] h-[100px]'>
                             <img className='w-full h-full object-cover' src={blog?.thumbnail[0]} alt="thumbnail" />
                         </div>
-                        <div className='bg-text_color_dark dark:bg-card_color_dark p-2'>
+                        <div className='bg-text_color_dark dark:bg-card_color_dark p-2 w-full'>
                             <p className='line-clamp-2'>{blog.title}</p>
                             <div className='flex gap-5 pt-5'>
                                 <div className='flex gap-3 items-center'>
