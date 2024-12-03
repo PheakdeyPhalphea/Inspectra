@@ -6,12 +6,15 @@ import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import * as Yup from "yup";
+import { useAppDispatch } from "@/redux/hooks";
+import { useRouter } from "next/navigation";
+import { setUserEmail } from "@/redux/feature/userSlice";
 export default function FormSignUpComponent() {
-
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirmPassword, setShowconfirmPassword] = useState(false);
   const [register] = useRegisterMutation();
+  const dispatch = useAppDispatch();
   const validationSchema = Yup.object({
     userName: Yup.string().required("userName is Required"),
     firstName: Yup.string().required("First Name is Required"),
@@ -30,6 +33,7 @@ export default function FormSignUpComponent() {
       .required("Confirm Password is Required"),
   });
 
+  const router = useRouter();
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
     // Toggle password visibility
@@ -47,13 +51,16 @@ export default function FormSignUpComponent() {
     password: "",
     confirmPassword: "",
   };
-  
+
   const handleSubmit = async (values: SigUpFormValues) => {
     setIsLoading(true);
     try {
       register({ user: values });
+      router.push("/verify");
+      dispatch(setUserEmail(values.email))
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       setIsLoading(false);
     }
   };

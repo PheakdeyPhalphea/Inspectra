@@ -95,7 +95,7 @@ export default function page() {
             <FormSignUpComponent />
 
             {/* Line Break */}
-            <hr className="my-2" />
+            <hr className="my-2 xl:mt-5" />
             {/* auth with google and github */}
             <div className=" block xl:hidden justify-center text-center items-center text-text_color_desc_light">
               <p className="font-normal">Or Continue</p>
@@ -127,14 +127,14 @@ export default function page() {
                   </div>
                 </MenubarTrigger>
 
-                <MenubarContent className="absolute bg-card_color_light bottom-[60px] -left-1">
-                  <div className="w-[400px] h-[60px] flex justify-between">
-                    <button className="w-[190px] py-3 flex items-center font-normal bg-text_color_light justify-center rounded-[10px]">
+                <MenubarContent className="absolute  bottom-[50px] -left-1">
+                  <div className="w-full h-[60px] space-x-5 flex justify-between">
+                    <button className="w-[230px] py-3 flex items-center font-normal bg-text_color_light justify-center rounded-[10px]">
                       <FcGoogle className="text-text_title_24" />
                       <span className="text-text_color_dark ml-3">Google</span>
                     </button>
 
-                    <button className="w-[190px] py-3 flex items-center font-normal bg-background_light_mode justify-center rounded-[10px]">
+                    <button className="w-[230px]  py-3 flex items-center font-normal bg-background_light_mode justify-center rounded-[10px]">
                       <VscGithub className="text-text_title_24 text-text_color_light" />
                       <span className="text-text_color_light ml-3">GitHub</span>
                     </button>
@@ -146,7 +146,7 @@ export default function page() {
             {/* Register */}
             <div className="text-center">
               <p className="text-text_color_desc_light text-[14px]">
-                Already have an account? ?{" "}
+                Already have an account?{" "}
                 <Link href={"/login"}>
                   <span className="text-link_color underline font-medium">
                     Login Now

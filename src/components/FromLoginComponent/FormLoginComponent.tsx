@@ -87,7 +87,7 @@ export default function FormLoginComponent() {
               }`}
             />
             {errors.email && touched.email && (
-              <div className="relative items-center justify-center flex top-[22px]	">
+              <div className="relative items-center justify-center flex top-[17px]	">
                 <div
                   className={`absolute z-10 w-auto  ${styles.popoverContainer} ${styles.popoverAnimation}`}
                 >
@@ -134,11 +134,17 @@ export default function FormLoginComponent() {
               )}
             </div>
 
-            <ErrorMessage
-              name="password"
-              component="div"
-              className={` mt-1 text-sm text-custom_red`}
-            />
+            {errors.password && touched.password && (
+              <div className="relative items-center justify-center flex top-[17px]	">
+                <div
+                  className={`absolute z-10 w-auto  ${styles.popoverContainer} ${styles.popoverAnimation}`}
+                >
+                  <p className={`text-text_body_16 ${styles.popoverText}`}>
+                    {errors.password}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           {/* Forget Password */}
           <div className="text-end pb-5">

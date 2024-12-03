@@ -42,7 +42,7 @@ export default function page() {
       <section className="h-full w-full my-auto xl:w-[40%] bg-text_color_dark  xl:py-[40px] flex flex-col ">
         {/* welcome title */}
 
-        <div className="w-full hidden md:block md:text-center  md:h-[10%] md:mt-[50px]   xl:hidden">
+        <div className="w-full hidden md:block md:text-center  md:h-[10%] md:mt-[50px] lg:h-[10%] lg:mt-[150px]    xl:hidden">
           <p className="text-[60px] text-text_color_light font-semibold leading-[1.2]">
             Welcome to <br />
             <span className="font-normal">Inspectra</span>
@@ -53,7 +53,7 @@ export default function page() {
         </div>
 
         {/* form */}
-        <div className=" h-screen m-[40px]  md:w-[60%] md:h-[70%]  md:my-[100px] md:mx-auto flex flex-col xl:h-full">
+        <div className=" h-screen m-[40px]  md:w-[60%] md:h-[70%] md:my-[100px]  md:mx-auto lg:h-[55%] lg:my-auto xl:h-[100px] xl:my-[50px] flex flex-col ">
           {/* Logo and close icon */}
           <div className="w-full flex justify-between">
             {/* Logo and name */}
@@ -92,37 +92,39 @@ export default function page() {
             {/* Line Break */}
             <hr className="my-4" />
 
-            {/* Auth Login */}
-            <div className="text-center">
-              <p className="text-text_color_desc_light text-[14px]">
-                Or Continue With
-              </p>
+            <div className="space-y-5">
+              {/* Auth Login */}
+              <div className="text-center">
+                <p className="text-text_color_desc_light text-[14px]">
+                  Or Continue With
+                </p>
+              </div>
+
+              {/* Google Button */}
+              <button className="w-full py-3 flex items-center font-normal bg-text_color_light justify-center rounded-[10px]">
+                <FcGoogle className="text-text_title_24" />
+                <span className="text-text_color_dark ml-3">
+                  Or Sign in with Google
+                </span>
+              </button>
+
+              {/* GitHub Button */}
+              <button className="w-full py-3 flex items-center font-normal bg-background_light_mode justify-center rounded-[10px]">
+                <FaGithub className="text-text_title_24" />
+                <span className="text-text_color_light ml-3">
+                  Or Sign in with GitHub
+                </span>
+              </button>
             </div>
 
-            {/* Google Button */}
-            <button className="w-full py-3 flex items-center font-normal bg-text_color_light justify-center rounded-[10px]">
-              <FcGoogle className="text-text_title_24" />
-              <span className="text-text_color_dark ml-3">
-                Or Sign in with Google
-              </span>
-            </button>
-
-            {/* GitHub Button */}
-            <button className="w-full py-3 flex items-center font-normal bg-background_light_mode justify-center rounded-[10px]">
-              <FaGithub className="text-text_title_24" />
-              <span className="text-text_color_light ml-3">
-                Or Sign in with GitHub
-              </span>
-            </button>
-
             {/* Register */}
-            <div className="text-center">
+            <div className="text-center my-5">
               <p className="text-text_color_desc_light text-[14px]">
                 Not yet have an account?{" "}
                 <Link href={"/signup"}>
-                <span className="text-link_color underline font-medium">
-                  Sign up now
-                </span>
+                  <span className="text-link_color underline font-medium">
+                    Sign up now
+                  </span>
                 </Link>
               </p>
             </div>
