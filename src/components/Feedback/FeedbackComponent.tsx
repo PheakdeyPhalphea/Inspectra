@@ -1,11 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import { Textarea } from "@/components/ui/textarea";
-import { useCreateUserFeedbackMutation } from "@/redux/service/feedback";
 import { useToast } from "@/components/hooks/use-toast";
-import { useTheme } from "next-themes";
+import { useCreateUserFeedbackMutation } from "@/redux/service/feedback";
 import { feedbackType } from "@/types/Feedback";
 import { Field, Form, Formik } from "formik";
+import { useTheme } from "next-themes";
 export default function FeedbackComponent() {
   const { theme } = useTheme();
   const { toast } = useToast();

@@ -55,7 +55,13 @@ export default function NavbarComponent() {
       });
   };
 
-  const isRender = pathname === "/login" || pathname === "/signup";
+  const isRender =
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/forget-password" ||
+    pathname === "/newpassword" ||
+    pathname === "/newpassword" ||
+    pathname === "/verify";
 
   return (
     <nav className="w-full mx-auto z-40 backdrop-blur-2xl sticky top-0">
@@ -253,7 +259,7 @@ export default function NavbarComponent() {
                               )}
                             </Link>
                           ))}
-                           {navbarDataWithProfile.map((item, index: number) => (
+                          {navbarDataWithProfile.map((item, index: number) => (
                             <Link key={index} href={item.link}>
                               {pathname === item.link ? (
                                 <p className="text-secondary_color">

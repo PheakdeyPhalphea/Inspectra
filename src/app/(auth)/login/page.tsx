@@ -42,7 +42,7 @@ export default function page() {
       <section className="h-full w-full my-auto xl:w-[40%] bg-text_color_dark  xl:py-[40px] flex flex-col ">
         {/* welcome title */}
 
-        <div className="w-full hidden md:block md:text-center  md:h-[10%] md:mt-auto   xl:hidden">
+        <div className="w-full hidden md:block md:text-center  md:h-[10%] md:mt-[50px]   xl:hidden">
           <p className="text-[60px] text-text_color_light font-semibold leading-[1.2]">
             Welcome to <br />
             <span className="font-normal">Inspectra</span>
@@ -53,7 +53,7 @@ export default function page() {
         </div>
 
         {/* form */}
-        <div className=" h-screen m-[40px]   md:w-[60%] md:h-[60%]  md:my-auto md:mx-auto flex flex-col xl:h-full">
+        <div className=" h-screen m-[40px]  md:w-[60%] md:h-[70%]  md:my-[100px] md:mx-auto flex flex-col xl:h-full">
           {/* Logo and close icon */}
           <div className="w-full flex justify-between">
             {/* Logo and name */}

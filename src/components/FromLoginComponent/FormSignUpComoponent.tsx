@@ -47,6 +47,7 @@ export default function FormSignUpComponent() {
     password: "",
     confirmPassword: "",
   };
+  
   const handleSubmit = async (values: SigUpFormValues) => {
     setIsLoading(true);
     try {
@@ -241,7 +242,7 @@ export default function FormSignUpComponent() {
               htmlFor="password"
               className="text-[14px] text-text_color_light block"
             >
-              confirmPassword
+              ConfirmPassword
             </label>
             <div className="relative">
               <Field
