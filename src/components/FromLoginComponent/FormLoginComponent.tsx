@@ -66,6 +66,7 @@ export default function FormLoginComponent() {
       validationSchema={validationSchema}
       onSubmit={(values) => {
         handleSubmit(values);
+        console.log(values)
       }}
     >
       {({ errors, touched }) => (
@@ -116,7 +117,6 @@ export default function FormLoginComponent() {
                        : ""
                    }`}
               />
-
               {!showPassword ? (
                 <IoEyeOffSharp
                   onClick={() => handleShowPassword()}

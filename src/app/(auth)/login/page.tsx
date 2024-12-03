@@ -53,7 +53,7 @@ export default function page() {
         </div>
 
         {/* form */}
-        <div className=" h-[80%] my-auto mx-[40px]  md:w-[60%] md:h-[60%]  md:my-auto md:mx-auto flex flex-col xl:h-full">
+        <div className=" h-screen m-[40px]   md:w-[60%] md:h-[60%]  md:my-auto md:mx-auto flex flex-col xl:h-full">
           {/* Logo and close icon */}
           <div className="w-full flex justify-between">
             {/* Logo and name */}
@@ -108,7 +108,7 @@ export default function page() {
             </button>
 
             {/* GitHub Button */}
-            <button className="w-full py-3 flex items-center font-normal bg-card_color_light justify-center rounded-[10px]">
+            <button className="w-full py-3 flex items-center font-normal bg-background_light_mode justify-center rounded-[10px]">
               <FaGithub className="text-text_title_24" />
               <span className="text-text_color_light ml-3">
                 Or Sign in with GitHub
@@ -119,9 +119,11 @@ export default function page() {
             <div className="text-center">
               <p className="text-text_color_desc_light text-[14px]">
                 Not yet have an account?{" "}
+                <Link href={"/signup"}>
                 <span className="text-link_color underline font-medium">
                   Sign up now
                 </span>
+                </Link>
               </p>
             </div>
           </div>

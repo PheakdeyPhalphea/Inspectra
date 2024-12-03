@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 export default function FooterComponent() {
   const { theme } = useTheme();
   const pathname = usePathname();
-  const isRender = pathname === "/login" || pathname === "/register";
+  const isRender = pathname === "/login" || pathname === "/signup";
 
   return (
     <footer>

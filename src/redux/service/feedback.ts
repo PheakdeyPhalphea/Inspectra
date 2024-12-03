@@ -1,24 +1,25 @@
 import { cyberApi } from "@/redux/api";
+import { feedbackType } from "@/types/Feedback";
 
 export const feedbackApi = cyberApi.injectEndpoints({
   endpoints: (builder) => ({
     // create user feedback
-    createUserFeedback: builder.mutation({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    createUserFeedback: builder.mutation<any, { message: feedbackType }>({
       query: ({ message }) => ({
-        url: `feedback`,
+        url: `feedbacks`,
         method: "POST",
-        body: { message },
+        body: message,
       }),
     }),
-
     // get user feedback
     getAllUserFeedback: builder.query({
       query: () => ({
-        url: `/feedback`,
+        url: `feedbacks`,
         providesTags: ["Feedback"],
       }),
     }),
   }),
 });
 
-export const { useCreateUserFeedbackMutation, useGetAllUserFeedbackQuery } = feedbackApi;
+export const { useCreateUserFeedbackMutation, useGetAllUserFeedbackQuery } =feedbackApi;
