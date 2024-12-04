@@ -9,6 +9,7 @@ import { useState } from "react";
 import * as Yup from "yup";
 import { toast } from "../hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { OtpType } from "@/data/Otp";
 export default function VerifyComponent() {
   const [verifyUserAccount, { isSuccess, isError }] =
     useVerifyUserAccountMutation();
@@ -16,7 +17,7 @@ export default function VerifyComponent() {
   //const email = useAppSelector((state) => state.user.email);
   const email = "kdeyhenessey@gmail.com";
   const [timerKey, setTimerKey] = useState(0); // State to restart timer
-  const initialValues: any = {
+  const initialValues: OtpType = {
     otp1: "",
     otp2: "",
     otp3: "",
@@ -33,8 +34,8 @@ export default function VerifyComponent() {
     otp5: Yup.string().required("OTP 5 is required "),
     otp6: Yup.string().required("OTP 6 is required "),
   });
-  const router = useRouter()
-  const handleSubmit = (values: any) => {
+  const router = useRouter();
+  const handleSubmit = (values: OtpType) => {
     const otp = Object.values(values).join("");
     try {
       if (isSuccess) {
@@ -43,7 +44,7 @@ export default function VerifyComponent() {
           description: "Verification Successfully ",
           variant: "success",
         });
-        router.push("/login")
+        router.push("/login");
       } else if (isError) {
         toast({
           description: "Verification Fail ",
@@ -84,7 +85,7 @@ export default function VerifyComponent() {
           <Form>
             <div className="flex justify-between m-5">
               {Array.from({ length: 6 }, (_, index) => {
-                const fieldName = `otp${index + 1}`;
+                const fieldName = `otp${index + 1}` as keyof OtpType;
                 return (
                   <Field
                     key={index}
@@ -93,6 +94,7 @@ export default function VerifyComponent() {
                     name={fieldName}
                     maxLength={1} // Restrict each field to a single character
                     value={values[fieldName]} // Dynamically update value
+                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onChange={(e: { target: { value: any } }) => {
                       handleChange(e); // Update Formik state
                       const value = e.target.value;
@@ -103,6 +105,7 @@ export default function VerifyComponent() {
                         nextField.focus(); // Focus on the next field if input is valid
                       }
                     }}
+                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onKeyDown={(e: { key: string; target: { value: any } }) => {
                       if (e.key === "Backspace") {
                         const value = e.target.value;
@@ -130,7 +133,7 @@ export default function VerifyComponent() {
               Verify
             </button>
             <p className="text-text_title_20 font-normal my-5 text-ascend_color">
-              {<CountdownTimer  key={timerKey} minutes={2} />}
+              {<CountdownTimer key={timerKey} minutes={2} />}
             </p>
             <p className="text-text_body_16 text-text_color_light m-5">
               If you didn&apos;t receive a code! <br />{" "}

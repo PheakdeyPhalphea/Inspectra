@@ -2,7 +2,7 @@
 import styles from "@/components/FromLoginComponent/styles.module.css";
 import { toast } from "@/components/hooks/use-toast";
 import { FormValues } from "@/types/FormType";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";

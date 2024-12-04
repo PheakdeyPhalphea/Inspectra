@@ -1,7 +1,11 @@
 import { toast } from "@/components/hooks/use-toast";
 import { useState, useEffect } from "react";
 
-export default function CountdownTimer({ minutes }: any) {
+interface CountdownTimerProps {
+  minutes: number;
+}
+
+export default function CountdownTimer({ minutes }: CountdownTimerProps) {
   const [timeRemaining, setTimeRemaining] = useState(minutes * 60); // Convert minutes to seconds
 
   useEffect(() => {

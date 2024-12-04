@@ -21,7 +21,7 @@ export function convertToDayMonthYear(timestamp: string) {
 
 
 // count down verify otp 
-export function startCountdown(minutes: any) {
+export function startCountdown(minutes: number) {
   let timeRemaining = minutes * 60; // Convert minutes to seconds
   const timerInterval = setInterval(() => {
       const minutesLeft = Math.floor(timeRemaining / 60);

@@ -1,15 +1,15 @@
-"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { RxCross2 } from "react-icons/rx";
-import { Field, Form, Formik } from "formik";
 export default function page() {
-  const initialValues = {
-    email: "",
-  };
-
-  const handleSubmit = (values: any) => {};
+  // const initialValues = {
+  //   email: "",
+  // };
+  // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // const handleSubmit = (values: any) => {
+  //   console.log(values)
+  // };
 
   return (
     <main className="h-screen  w-full mx-auto flex ">
@@ -65,7 +65,7 @@ export default function page() {
           Enter your email for the verification process, we will send 6 digits
           code to your email.
         </p>
-        <Formik
+        {/* <Formik
           initialValues={initialValues}
           onSubmit={(values) => {
             handleSubmit(values);
@@ -97,7 +97,7 @@ export default function page() {
               </p>
             </button>
           </Form>
-        </Formik>
+        </Formik> */}
       </section>
     </main>
   );
