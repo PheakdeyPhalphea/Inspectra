@@ -8,8 +8,7 @@ import { useTheme } from "next-themes";
 export default function FeedbackComponent() {
   const { theme } = useTheme();
   const { toast } = useToast();
-  const [createUserFeedback, { isSuccess, isError }] =
-    useCreateUserFeedbackMutation();
+  const [createUserFeedback] = useCreateUserFeedbackMutation();
 
   const initialValues: createFeedbackType = {
     message: "",
@@ -17,18 +16,12 @@ export default function FeedbackComponent() {
 
   const handleSubmit = (values: createFeedbackType) => {
     try {
-      if (isSuccess) {
-        createUserFeedback({ message: values });
-        toast({
-          description: "Thank For FeedBack Our Team Will Review It",
-          variant: "success",
-        });
-      } else if (isError) {
-        toast({
-          description: "Failed to Submit Feedback",
-          variant: "error",
-        });
-      }
+      createUserFeedback({ message: values });
+      toast({
+        description: "Thank For FeedBack Our Team Will Review It",
+        variant: "success",
+      });
+
     } catch (error) {
       toast({
         description: `${error}`,
@@ -63,7 +56,7 @@ export default function FeedbackComponent() {
               id="message"
               name="message"
               placeholder="Your Message"
-              className={`mt-1 w-full border mb-5 rounded-tl-[20px] rounded-br-[20px]  pb-[100px] min-h-[150px] bg-text_color_dark dark:text-text_color_light  focus:outline-none focus:right-2 focus:border-text_color_light   `}
+              className={`mt-1 w-full border mb-5 rounded-tl-[20px] rounded-br-[20px] px-2 pb-[100px] min-h-[150px] bg-transparent  focus:outline-none focus:right-2 focus:border-text_color_light   `}
             />
 
             <button

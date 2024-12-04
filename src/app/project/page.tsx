@@ -1,11 +1,8 @@
-import { LuPlus } from "react-icons/lu";
-import React from "react";
-import SearchAndFilterComponent from "@/components/Project/SearchAndFilterComponent/SearchAndFilterComponent";
-import { Metadata } from "next";
+import ProjectCardNameComponent from "@/components/Project/CardProjectComponent/ProjectCardNameComponent";
 import QualityCardComponent from "@/components/Project/CardResultComponent/QualityGateCardComponent";
 import ResultCardComponent from "@/components/Project/CardResultComponent/ResultCardComponent";
-import ProjectCardComponent from "@/components/Project/CardProjectComponent/ProjectCardComponent";
-import ProjectCardNameComponent from "@/components/Project/CardProjectComponent/ProjectCardNameComponent";
+import CreateProjectComponent from "@/components/Project/CreateProjectComponent/CreateProjectComponent";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Project - Inspectra",
@@ -23,10 +20,7 @@ export default function page() {
           <div className="p-2 rounded-2xl w-[50px] items-center text-text_color_light flex justify-center bg-primary_color">
             All
           </div>
-          <div className="px-4 py-2 rounded-2xl inline-flex w-auto md:w-[170px]  items-center text-text_color_light md:flex md:justify-around bg-text_color_dark">
-            <p className="hidden md:block">Create Project</p>
-            <LuPlus />
-          </div>
+          <CreateProjectComponent />
         </div>
       </section>
       <section className="w-full h-full flex justify-between mb-[60px] md:my-[60px]">
@@ -34,9 +28,7 @@ export default function page() {
           <QualityCardComponent />
           <ResultCardComponent />
         </div>
-        <div className="w-full h-full lg:w-[65%] p-10 rounded-[20px] bg-text_color_dark dark:bg-card_color_dark">
-          <SearchAndFilterComponent/>
-          <ProjectCardComponent />
+        <div className="w-full h-full text-center lg:w-[65%] p-10 rounded-[20px] bg-text_color_dark dark:bg-card_color_dark">
           <ProjectCardNameComponent />
         </div>
       </section>
