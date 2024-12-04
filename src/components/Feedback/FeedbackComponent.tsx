@@ -11,6 +11,8 @@ export default function FeedbackComponent() {
     useCreateUserFeedbackMutation(); // waitin for test api
   const [feedback, setFeedback] = useState(""); // State to capture feedback
 
+  console.log('this is feedback',feedback);
+
   const handleFeedbackChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
@@ -25,7 +27,9 @@ export default function FeedbackComponent() {
         description: "Thank For FeedBack Our Team Will Review It",
         variant: "success",
       });
+      console.log('this is feedback 1=',feedback);
       createUserFeedback({ message: feedback });
+
     } else if (isError) {
       toast({
         description: "Failed to Submit Feedback",

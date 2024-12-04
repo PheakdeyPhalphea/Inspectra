@@ -5,7 +5,7 @@ export const feedbackApi = cyberApi.injectEndpoints({
     // create user feedback
     createUserFeedback: builder.mutation({
       query: ({ message }) => ({
-        url: `feedback`,
+        url: `feedbacks`,
         method: "POST",
         body: { message },
       }),
@@ -14,7 +14,7 @@ export const feedbackApi = cyberApi.injectEndpoints({
     // get user feedback
     getAllUserFeedback: builder.query({
       query: () => ({
-        url: `/feedback`,
+        url: `feedbacks`,
         providesTags: ["Feedback"],
       }),
     }),
