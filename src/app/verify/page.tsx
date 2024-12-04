@@ -4,10 +4,11 @@ import { RxCross2 } from "react-icons/rx";
 
 export default function page() {
   return (
-    <main className="h-screen w-full justify-around flex-col  text-center bg-background_light_mode">
+    <main className="h-screen w-full my-auto justify-around flex-col  text-center bg-background_light_mode">
       {/* title */}
-      <section>
-        <section className="w-full my-[45px]">
+      <section className="h-full flex flex-col items-center justify-center">
+        {/* Header Section */}
+        <section className="w-full my-10 text-center">
           <p className="text-[60px] text-text_color_light font-semibold leading-[1.2]">
             Verify Your <br />
             <span className="font-normal">Account</span>
@@ -16,10 +17,11 @@ export default function page() {
             To gain more access to our features
           </p>
         </section>
-        {/* verify code section */}
-        <section className=" flex-col justify-around p-5 h-full mx-auto w-[600px] rounded-[20px] bg-text_color_dark">
+
+        {/* Verify Code Section */}
+        <section className="flex flex-col justify-around p-5 h-auto mx-auto w-[350px] md:w-[600px] rounded-[20px] bg-text_color_dark">
           <div className="flex justify-between m-5">
-            <p className="text-text_header_34 text-text_color_light ">
+            <p className="text-text_header_34 text-text_color_light">
               Verification
             </p>
             <Link
@@ -34,12 +36,8 @@ export default function page() {
               Enter your 6 digits code that you received on your email.
             </p>
           </div>
-          {/* form for otp */}
+          {/* Form for OTP */}
           <VerifyComponent />
-          <p className="text-text_body_16 text-text_color_light m-5">
-            If you did&apos;t receive a code! <br />{" "}
-            <span className="text-link_color underline">Resend</span>
-          </p>
         </section>
       </section>
     </main>
