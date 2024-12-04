@@ -13,7 +13,7 @@ import { SiMicrodotblog } from "react-icons/si";
 import { TbScan } from "react-icons/tb";
 import { IoLogOutSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-import { IoSunny , IoMoon} from "react-icons/io5";
+import { IoSunny, IoMoon } from "react-icons/io5";
 
 import {
   Menubar,
@@ -55,7 +55,13 @@ export default function NavbarComponent() {
       });
   };
 
-  const isRender = pathname === "/login" || pathname === "/register";
+  const isRender =
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/forget-password" ||
+    pathname === "/newpassword" ||
+    pathname === "/newpassword" ||
+    pathname === "/verify";
 
   return (
     <nav className="w-full mx-auto z-40 backdrop-blur-2xl sticky top-0">
@@ -242,7 +248,7 @@ export default function NavbarComponent() {
                             </div>
                           </div>
                           <hr className="text-text_color_light" />
-                          {navbarDataWithProfile.map((item, index: number) => (
+                          {navbarData.map((item, index: number) => (
                             <Link key={index} href={item.link}>
                               {pathname === item.link ? (
                                 <p className="text-secondary_color">
@@ -253,7 +259,7 @@ export default function NavbarComponent() {
                               )}
                             </Link>
                           ))}
-                          {navbarData.map((item, index: number) => (
+                          {navbarDataWithProfile.map((item, index: number) => (
                             <Link key={index} href={item.link}>
                               {pathname === item.link ? (
                                 <p className="text-secondary_color">

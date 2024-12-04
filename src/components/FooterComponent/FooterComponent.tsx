@@ -11,7 +11,12 @@ import { usePathname } from "next/navigation";
 export default function FooterComponent() {
   const { theme } = useTheme();
   const pathname = usePathname();
-  const isRender = pathname === "/login" || pathname === "/register";
+  const isRender =
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/forget-password" ||
+    pathname === "/newpassword" ||
+    pathname === "/verify";
 
   return (
     <footer>
@@ -62,7 +67,7 @@ export default function FooterComponent() {
                 </div>
                 <div className="mt-5">
                   {FeaturesFooter.map((featuresItem, index: number) => (
-                    <Link 
+                    <Link
                       key={index}
                       className="my-3 block text-text_body_16 text-text_color_light dark:text-text_color_dark"
                       href={featuresItem.link}
@@ -155,7 +160,12 @@ export default function FooterComponent() {
               </Link>
 
               {/* Facebook Card */}
-              <Link target="blank" href={"https://www.facebook.com/share/1XTYkShkpg/?mibextid=LQQJ4d"}>
+              <Link
+                target="blank"
+                href={
+                  "https://www.facebook.com/share/1XTYkShkpg/?mibextid=LQQJ4d"
+                }
+              >
                 <button className="flex items-center space-x-2 px-4 py-2 border rounded-full hover:bg-text_color_desc_light hover:text-text_color_dark">
                   <FaFacebook className="w-5 h-5" />
                   <span>Facebook</span>
