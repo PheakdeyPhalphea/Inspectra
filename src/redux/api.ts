@@ -6,6 +6,7 @@ import { RootState } from "./store";
 import { setAccessToken } from "@/redux/feature/Auth/authSlice";
 // initialize an empty api service that we'll inject endpoints into later as needed
 
+
 // Setting up prepareHeaders to include the token in the headers
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_API_URL,
@@ -23,6 +24,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const baseQueryWithReAuth = async (args: any, api: any, extraOptions: any) => {
   let result = await baseQuery(args, api, extraOptions);
 

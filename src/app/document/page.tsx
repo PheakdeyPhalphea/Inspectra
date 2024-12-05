@@ -5,59 +5,115 @@ import React, { useState } from "react";
 import { HiDocumentSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { GoHomeFill } from "react-icons/go";
+import Image from "next/image";
+
+
+type Document = {
+  uuid: string;
+  documentCategoryName: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  documentImages: string[];
+};
+
+type DocumentCategory = {
+  uuid: string;
+  name: string;
+  description: string;
+  documents: Document[];
+};
 
 export default function Document() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [breadcrumb, setBreadcrumb] = useState<(string | JSX.Element)[]>([<GoHomeFill key="home" />]);
-  const [selectedContent, setSelectedContent] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<DocumentCategory | null>(null);
+  const [selectedDocument, setSelectedDocument] = useState<Document | null>(null);
+  const imagePlaceholder = "http://136.228.158.126:4011/images/ef97c45c-3aa2-468c-8d14-7e9d5b702a0b.png";
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Function to update breadcrumb
-  const handleMenuClick = (question: string, answer?: string) => {
-    if (answer) {
-      setBreadcrumb([<GoHomeFill key="home" />, question, answer]); // Update breadcrumb with question and answer
-      setSelectedContent(`Content for "${answer}" in section "${question}"`);
+  const handleMenuClick = (category: DocumentCategory, document?: Document) => {
+    if (category && document) {
+      setBreadcrumb([<GoHomeFill key="home" />, category.name, document.title]);
+      setSelectedCategory(category);
+      setSelectedDocument(document);
     } else {
-      setBreadcrumb([<GoHomeFill key="home" />, question]); // Update breadcrumb with only the question
-      setSelectedContent(`Content for "${question}"`);
+      setBreadcrumb([<GoHomeFill key="home" />, category.name]);
+      setSelectedCategory(category);
+      setSelectedDocument(null);
     }
   };
 
-    // Handle breadcrumb clicks
-    const handleBreadcrumbClick = (index: number) => {
-      const newBreadcrumb = breadcrumb.slice(0, index + 1); // Trim breadcrumb to the clicked level
-      setBreadcrumb(newBreadcrumb);
-  
-      // Update content based on breadcrumb level
-      if (newBreadcrumb.length === 1) {
-        setSelectedContent("Welcome to Home!");
-      } else if (newBreadcrumb.length === 2) {
-        setSelectedContent(`Content for "${newBreadcrumb[1]}"`);
-      } else if (newBreadcrumb.length === 3) {
-        setSelectedContent(
-          `Content for "${newBreadcrumb[2]}" in section "${newBreadcrumb[1]}"`
-        );
-      }
-    };
+
+  // Handle breadcrumb clicks
+  const handleBreadcrumbClick = (index: number) => {
+    const newBreadcrumb = breadcrumb.slice(0, index + 1);
+    setBreadcrumb(newBreadcrumb);
+
+    if (newBreadcrumb.length === 1) {
+      setSelectedCategory(null);
+      setSelectedDocument(null);
+    } else if (newBreadcrumb.length === 2) {
+      setSelectedDocument(null);
+    }
+  };
 
   return (
     <main className="w-[90%] m-auto flex flex-col lg:flex-row">
       {/* Toggle Button for Small and Medium Screens */}
       <button
-        className="lg:hidden fixed top-5 left-5 bg-blue-500 text-white p-3 rounded-full shadow-md z-50"
+        className="lg:hidden fixed top-15 left-5 bg-blue-500 text-white p-2 rounded-full shadow-md z-50"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        <AiOutlineMenu size={24} />
+        <AiOutlineMenu size={16} />
       </button>
 
-      {/* Sidebar */}
+      {/* Sidebar Overlay */}
       <section
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } lg:block w-full lg:w-[30%] bg-card_color_light rounded h-screen p-5 my-10 dark:bg-card_color_dark`}
+        className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 transition-opacity duration-300 z-40 ${isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          } lg:hidden`}
+        onClick={() => setIsSidebarOpen(false)} // Close sidebar when clicking outside
+      >
+        <div
+          className={`fixed top-0 left-0 w-3/5 max-w-xs bg-card_color_light h-full p-5 transition-transform duration-200 z-50 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+        >
+          <div className="w-full max-w mx-auto mb-5">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-full p-2.5 pl-10 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <span className="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                <HiDocumentSearch />
+              </span>
+            </div>
+          </div>
+          <DropdownMenu
+            onMenuClick={(category, document) => {
+              handleMenuClick(category, document); // Update content and breadcrumb
+
+              // Close sidebar only if a document is selected
+              if (document) {
+                setIsSidebarOpen(false);
+              }
+            }}
+          />
+        </div>
+      </section>
+
+      {/* Sidebar for Larger Screens */}
+      <section
+        className={`hidden lg:block w-full lg:w-[30%] bg-card_color_light rounded h-auto p-5 my-10 dark:bg-card_color_dark`}
       >
         <div className="w-full max-w mx-auto mb-5">
           <div className="relative">
             <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               type="text"
               placeholder="Search..."
               className="w-full p-2.5 pl-10 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -67,15 +123,16 @@ export default function Document() {
             </span>
           </div>
         </div>
-        <DropdownMenu onMenuClick={handleMenuClick} />
+        <DropdownMenu searchTerm={searchTerm} onMenuClick={handleMenuClick} />
       </section>
+
 
       {/* Main Content */}
       <section
-        className={`${
-          isSidebarOpen ? "hidden" : "block"
-        } lg:block w-full lg:w-[70%] bg-card_color_light rounded h-screen p-5 my-10 lg:ml-5 dark:bg-card_color_dark`}
+        className={`${isSidebarOpen ? "hidden" : "block"
+          } lg:block w-full lg:w-[70%] bg-card_color_light rounded h-auto p-5 my-10 lg:ml-5 dark:bg-card_color_dark`}
       >
+        {/* handle breadcrumb in the main content */}
         <nav className="mb-5 text-sm text-text_color_desc_light">
           {breadcrumb.map((crumb, index) => (
             <span key={index}>
@@ -89,9 +146,85 @@ export default function Document() {
             </span>
           ))}
         </nav>
-         {/* Display the content */}
-         <div className="text-gray-700 dark:text-gray-300">
-          {selectedContent}
+
+        {/* Display the content */}
+        <div className="text-gray-700 dark:text-gray-300">
+          {selectedDocument ? (
+            <div>
+              <h2 className="text-2xl font-bold">{selectedDocument.title}</h2>
+              <p className="mt-3">{selectedDocument.description}</p>
+
+              {/* Render images if they exist or show a placeholder */}
+              <div className="w-[100%] mt-3 ">
+                {selectedDocument.documentImages && selectedDocument.documentImages.length > 0 ? (
+                  selectedDocument.documentImages.map((imageUrl, index) => (
+                    <Image
+                      key={index}
+                      src={imageUrl}
+                      alt={`${selectedDocument.title} Image ${index + 1}`}
+                      className="w-full h-auto rounded shadow"
+                      onError={(e) => (e.currentTarget.src = `${imagePlaceholder}`)}
+                    />
+                  ))
+                ) : (
+                  // Placeholder for missing images
+                  <Image
+                    src={imagePlaceholder}
+                    alt="No image available"
+                    className="w-full h-auto rounded shadow"
+                  />
+                )}
+              </div>
+            </div>
+          ) : selectedCategory ? (
+            <div id="document">
+              <h2 className="text-2xl font-bold mb-3">{selectedCategory.name}</h2>
+              <ul className="mt-3">
+                {selectedCategory.documents.map((doc) => (
+                  <li key={doc.uuid} className="mt-1" >
+                    <h2 className="text-2xl font-bold">
+                      <a href={`#document-${doc.uuid}`}>{doc.title}</a>
+                    </h2>
+                    <p className="mt-3 mb-3">{doc.description}</p>
+                    {/* Render images if they exist or show a placeholder */}
+                    <div className="w-[100%] mt-5 mb-5">
+                      {doc.documentImages && doc.documentImages.length > 0 ? (
+                        doc.documentImages.map((imageUrl, index) => (
+                          <Image
+                            key={index}
+                            src={imageUrl}
+                            alt={`${doc.title} Image ${index + 1}`}
+                            className="w-full h-auto rounded shadow"
+                            onError={(e) => (e.currentTarget.src = `${imagePlaceholder}`)}
+                          />
+                        ))
+                      ) : (
+                        // Placeholder for missing images
+                        <Image
+                          src={imagePlaceholder}
+                          alt="No image available"
+                          className="w-full h-auto rounded shadow"
+                        />
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+            </div>
+          ) : (
+            <div>
+              <h2 className="text-lg lg:text-2xl font-bold">Welcome to Inspectra documents</h2>
+              <p className="mt-3">Select a category or document to view its details.</p>
+              <div className="w-[100%] mt-5 mb-5">
+                <Image
+                  src={imagePlaceholder}
+                  alt="Image"
+                  className="w-full h-auto rounded shadow"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </main>
