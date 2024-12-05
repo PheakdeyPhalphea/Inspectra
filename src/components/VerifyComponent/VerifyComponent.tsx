@@ -5,17 +5,17 @@ import {
   useVerifyUserAccountMutation,
 } from "@/redux/service/verify";
 import { Field, Form, Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { toast } from "../hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { OtpType } from "@/data/Otp";
+import { useAppSelector } from "@/redux/hooks";
 export default function VerifyComponent() {
   const [verifyUserAccount, { isSuccess, isError }] =
     useVerifyUserAccountMutation();
   const [reVerifyUserAccount] = useReVerifyUserAccountMutation();
-  //const email = useAppSelector((state) => state.user.email);
-  const email = "kdeyhenessey@gmail.com";
+  const email = useAppSelector((state) => state.user.email);
   const [timerKey, setTimerKey] = useState(0); // State to restart timer
   const initialValues: OtpType = {
     otp1: "",
@@ -37,9 +37,25 @@ export default function VerifyComponent() {
   const router = useRouter();
   const handleSubmit = (values: OtpType) => {
     const otp = Object.values(values).join("");
+    verifyUserAccount({ data: { email, otp } });
+  };
+
+  const handleResend = async () => {
+    setTimerKey((prevKey) => prevKey + 1);
+    try {
+      reVerifyUserAccount({ email });
+      toast({
+        description: "Check Your Email For Verify Code",
+        variant: "success",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     try {
       if (isSuccess) {
-        verifyUserAccount({ data: { email, otp } });
         toast({
           description: "Verification Successfully ",
           variant: "success",
@@ -57,21 +73,7 @@ export default function VerifyComponent() {
         variant: "error",
       });
     }
-  };
-
-  const handleResend = async () => {
-    setTimerKey((prevKey) => prevKey + 1);
-    try {
-      reVerifyUserAccount({ email });
-      toast({
-        description: "Check Your Email For Verify Code",
-        variant: "success",
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  }, [isSuccess, isError]);
   return (
     <section className="w-full ">
       <Formik
@@ -94,7 +96,7 @@ export default function VerifyComponent() {
                     name={fieldName}
                     maxLength={1} // Restrict each field to a single character
                     value={values[fieldName]} // Dynamically update value
-                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onChange={(e: { target: { value: any } }) => {
                       handleChange(e); // Update Formik state
                       const value = e.target.value;
@@ -105,7 +107,7 @@ export default function VerifyComponent() {
                         nextField.focus(); // Focus on the next field if input is valid
                       }
                     }}
-                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     onKeyDown={(e: { key: string; target: { value: any } }) => {
                       if (e.key === "Backspace") {
                         const value = e.target.value;

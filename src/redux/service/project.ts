@@ -3,7 +3,7 @@ import { ProjectNameType } from "@/types/ProjectNameType";
 
 export const projectAPI = cyberApi.injectEndpoints({
   endpoints: (builder) => ({
-    // create user feedback
+    // create user Project
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     createProjectName: builder.mutation<any, { projectName: ProjectNameType }>({
       query: ({ projectName }) => ({
@@ -12,7 +12,7 @@ export const projectAPI = cyberApi.injectEndpoints({
         body: projectName,
       }),
     }),
-    // get user feedback
+    // get user Project
     getAllProjectsName: builder.query({
       query: () => ({
         url: `projects`,

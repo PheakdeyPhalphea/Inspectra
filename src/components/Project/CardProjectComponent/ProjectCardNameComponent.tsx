@@ -1,9 +1,6 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
 
-import { useGetAllProjectsNameQuery } from "@/redux/service/project";
-import LoadProjectComponent from "../LoadingProjectComponent/LoadProjectComponent";
-import { ProjectNameType } from "@/types/ProjectNameType";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -14,35 +11,80 @@ import {
 } from "@/components/ui/alert-dialog";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
+  DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { RxCross2 } from "react-icons/rx";
-import { Field, Form, Formik } from "formik";
+import { useGetAllProjectsNameQuery } from "@/redux/service/project";
+import { ProjectNameType } from "@/types/ProjectNameType";
+
+import { toast } from "@/components/hooks/use-toast";
+import { GitUrlType } from "@/data/GitUrl";
 import { FaGithub } from "react-icons/fa";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
+import LoadProjectComponent from "../LoadingProjectComponent/LoadProjectComponent";
+
+
 export default function ProjectCardNameComponent() {
-  const getAllProjectsName = useGetAllProjectsNameQuery({});
-  const projectResultTotal = getAllProjectsName?.data?.data?.length;
-  const projectResult = getAllProjectsName?.data?.data;
+  const { data: getAllProjectsName, isError } = useGetAllProjectsNameQuery({});
+  const projectResult = getAllProjectsName?.data;
+  const [selectedBranch, setSelectedBranch] = useState("Select Project Branch");
+  const [gitUrlResult, setGitUrl] = useState<string>(""); // Store the input value
+  const [gitResult, setGitResult] = useState([]); // result get from git url
+  const [listDirectories, setListDirectories] = useState<{
+    files: any[];
+    subdirectories?: any[];
+  } | null>(null); // result get from git url
+  const resultListAllFile = listDirectories?.files;
+  const resultListAllSubdirectories = listDirectories?.subdirectories;
 
-  type projectGitUrl = {
-    projectGitUrl: string;
+  // handle for git input from user and fetch api
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const fetchGitbranch = async () => {
+        const data = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}gits/branches?gitUrl=${gitUrlResult}`
+        );
+        if (data.ok) {
+          toast({
+            description: "Get All Branches Successfully",
+            variant: "success",
+          });
+        }
+        const result = await data.json();
+        setGitResult(result);
+      };
+      fetchGitbranch();
+    }
+  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGitUrl(e.target.value); // Update the state with the input value
   };
 
-  const initValues: projectGitUrl = {
-    projectGitUrl: "",
+  // handle on get all Directories from user after git url and selecet branch
+  const handleFetchDirectories = async () => {
+    if (selectedBranch !== "Select Project Branch" && gitUrlResult) {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}gits/list_files?gitUrl=${gitUrlResult}&branch=${selectedBranch}`
+      );
+      const data = await response.json();
+      setListDirectories(data);
+    } else {
+      console.log("error");
+    }
   };
+  useEffect(() => {
+    if (selectedBranch !== "Select Project Branch" && gitUrlResult) {
+      handleFetchDirectories();
+    }
+  }, [selectedBranch, gitUrlResult]);
 
-  const handleSubmit = (values: projectGitUrl) => {
-    console.log(values);
-  };
   return (
     <div>
-      {projectResultTotal === 0 ? (
+      {isError ? (
         <LoadProjectComponent />
       ) : (
         projectResult?.map((projectResult: ProjectNameType, index: number) => (
@@ -69,7 +111,7 @@ export default function ProjectCardNameComponent() {
                 <AlertDialogTrigger asChild>
                   <p className="text-link_color underline">Configure Project</p>
                 </AlertDialogTrigger>
-                <AlertDialogContent className=" w-[90%] md:w-full rounded-[20px] bg-text_color_dark h-full flex flex-col ">
+                <AlertDialogContent className=" w-[90%] md:w-full rounded-[20px] bg-text_color_dark h-full flex flex-col   ">
                   <AlertDialogHeader>
                     <AlertDialogTitle className="flex justify-between text-center items-center">
                       <p className="text-text_title_24 text-text_color_light">
@@ -84,31 +126,18 @@ export default function ProjectCardNameComponent() {
                     </AlertDialogTitle>
                   </AlertDialogHeader>
                   {/* git url */}
-                  <Formik
-                    initialValues={initValues}
-                    onSubmit={(values) => {
-                      handleSubmit(values);
-                    }}
-                  >
-                    <Form>
-                      <div className="relative">
-                        <FaGithub className="absolute top-1/2 left-3 text-text_title_24 transform -translate-y-1/2 text-text_color_desc_light " />
-                        <Field
-                          type="text"
-                          id="projectName"
-                          name="projectName"
-                          placeholder="Enter Git URL"
-                          className="mt-1 w-full rounded-md border bg-text_color_dark dark:text-text_color_light pl-12 pr-3 py-3 focus:outline-none focus:ring-2 focus:ring-primary_color"
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        className="w-full mt-5 py-3 bg-primary_color text-text_color_light font-semibold flex justify-center rounded-[10px]"
-                      >
-                        Submit
-                      </button>
-                    </Form>
-                  </Formik>
+                  <div className="relative">
+                    <FaGithub className="absolute top-1/2 left-3 text-text_title_24 transform -translate-y-1/2 text-text_color_desc_light" />
+                    <input
+                      type="text"
+                      placeholder="Enter Git URL"
+                      value={gitUrlResult}
+                      onChange={handleChange} // Update the state with the input value
+                      onKeyDown={handleKeyPress} // Trigger logic on Enter key press
+                      className="mt-1 w-full rounded-md border bg-text_color_dark dark:text-text_color_light pl-12 pr-3 py-3 focus:outline-none  border-ascend_color"
+                    />
+                  </div>
+                  {/* select branch */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <div className="">
@@ -117,41 +146,33 @@ export default function ProjectCardNameComponent() {
                         </p>
                         <div className="flex px-5 justify-between items-center rounded-[10px] border border-ascend_color bg-background_light_mode">
                           <p className="text-text_body_16  py-3  text-text_color_desc_light">
-                            Select Project Branch
+                            {selectedBranch}
                           </p>
                           <IoIosArrowDown className="text-text_color_light h-5 w-5  " />
                         </div>
                       </div>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-full">
+                    <DropdownMenuContent className="w-[462px] text-text_color_light text-start bg-background_light_mode">
                       <DropdownMenuSeparator />
-                      <DropdownMenuCheckboxItem> Main</DropdownMenuCheckboxItem>
-                      <DropdownMenuCheckboxItem>dev</DropdownMenuCheckboxItem>
-                      <DropdownMenuCheckboxItem>prob</DropdownMenuCheckboxItem>
+                      {gitResult?.map(
+                        (gitResult: GitUrlType, index: number) => (
+                          <DropdownMenuItem
+                            key={index}
+                            onClick={() =>
+                              setSelectedBranch(`${gitResult?.name}`)
+                            }
+                          >
+                            {gitResult?.name}
+                          </DropdownMenuItem>
+                        )
+                      )}
+                      <DropdownMenuSeparator />
                     </DropdownMenuContent>
                   </DropdownMenu>
-                  {/* select language */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <div className="">
-                        <p className="text-text_body_16 text-text_color_light my-2">
-                          Programming Language
-                        </p>
-                        <div className="flex px-5 justify-between items-center rounded-[10px] border border-ascend_color bg-background_light_mode">
-                          <p className="text-text_body_16  py-3  text-text_color_desc_light">
-                            Select Language
-                          </p>
-                          <IoIosArrowDown className="text-text_color_light h-5 w-5  " />
-                        </div>
-                      </div>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-full">
-                      <DropdownMenuSeparator />
-                      <DropdownMenuCheckboxItem> Main</DropdownMenuCheckboxItem>
-                      <DropdownMenuCheckboxItem>dev</DropdownMenuCheckboxItem>
-                      <DropdownMenuCheckboxItem>prob</DropdownMenuCheckboxItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  {/* directories  */}
+                  <div className="h-[300px] w-full  overflow-y-scroll">
+                  
+                  </div>
                 </AlertDialogContent>
               </AlertDialog>
             </div>
