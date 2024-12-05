@@ -1,12 +1,17 @@
 import { LuPlus } from "react-icons/lu";
 import React from "react";
 import SearchAndFilterComponent from "@/components/Project/SearchAndFilterComponent/SearchAndFilterComponent";
-
+import { Metadata } from "next";
 import QualityCardComponent from "@/components/Project/CardResultComponent/QualityGateCardComponent";
 import ResultCardComponent from "@/components/Project/CardResultComponent/ResultCardComponent";
 import ProjectCardComponent from "@/components/Project/CardProjectComponent/ProjectCardComponent";
 import ProjectCardNameComponent from "@/components/Project/CardProjectComponent/ProjectCardNameComponent";
 
+export const metadata: Metadata = {
+  title: "Project - Inspectra",
+  description:
+    "Learn more about Inspectra, a white-box testing platform designed to review source code and identify security weaknesses. Discover our mission, values, and commitment to secure development.",
+};
 export default function page() {
   return (
     <main className="w-[90%] mx-auto">

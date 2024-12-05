@@ -1,7 +1,11 @@
+export type createFeedbackType = {
+  message: string;
+};
+
 export type feedbackType = {
-  firstName: string,
-  lastName: string,
-  profile: string,
-  message: string,
-  createdAt: string,
+    message: string;
+  firstName: string;
+  lastName: string;
+  createdAt: string;
+  profile: string;
 };

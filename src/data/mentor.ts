@@ -1,19 +1,7 @@
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-type SocialMedia = {
-  platform: string;
-  icon: React.ElementType;
-  link: string;
-};
-
-type Mentor = {
-  name: string;
-  image: string;
-  socialMedia: SocialMedia[];
-};
-
-export const mentorData: Mentor[] = [
+export const mentorData = [
   {
     name: "Kim Chansokpheng",
     image: "/images/Cher-Pheng-Remove-BG.png",
@@ -21,22 +9,22 @@ export const mentorData: Mentor[] = [
       {
         platform: "GitHub",
         icon: FaGithub, 
-        link: "https://github.com/kimchansokpheng",
+        link: "https://github.com/sokpheng001",
       },
       {
         platform: "Telegram",
         icon: FaTelegramPlane,
-        link: "https://t.me/kimchansokpheng",
+        link: "https://t.me/sokpheng001",
       },
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/kim-chansokpheng-0b3b0b1a4/",
+        link: "https://www.linkedin.com/in/kim-chansokpheng-6b6513267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       },
       {
         platform: "Email",
         icon: MdEmail,
-        link: "mailto:kim.chansokpheng@example.com",
+        link: "mailto:kimchansokpheng123@gmail.com",
       },
     ],
   },
@@ -47,22 +35,22 @@ export const mentorData: Mentor[] = [
       {
         platform: "GitHub",
         icon: FaGithub, 
-        link: "https://github.com/kaykeo",
+        link: "https://github.com/keoKAY",
       },
       {
         platform: "Telegram",
         icon: FaTelegramPlane,
-        link: "https://t.me/kaykeo",
+        link: "https://t.me/keo_KAY",
       },
       {
         platform: "LinkedIn",
         icon: FaLinkedinIn,
-        link: "https://www.linkedin.com/in/kaykeo-0b3b0b1a4/",
+        link: "https://www.linkedin.com/in/keo-kay-abb369187/",
       },
       {
         platform: "Email",
         icon: MdEmail,
-        link: "mailto:kaykeo@example.com",
+        link: "mailto:keokay888@gmail.com",
       },
     ],
   },

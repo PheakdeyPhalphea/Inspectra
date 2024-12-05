@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Metadata } from "next";
 import UseCaseComponent from "@/components/UseCaseComponent/UseCaseComponent";
 import React from "react";
 import Link from "next/link";
 
+export const metadata: Metadata = {
+  title: "Use Case - Inspectra",
+  description:
+    "Learn more about Inspectra, a white-box testing platform designed to review source code and identify security weaknesses. Discover our mission, values, and commitment to secure development.",
+};
 export default function page() {
   return (
     <main>

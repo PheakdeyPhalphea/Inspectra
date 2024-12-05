@@ -1,4 +1,5 @@
 import { cyberApi } from "@/redux/api";
+import { UserDetail } from "@/types/UserDetail";
 
 
 export const userAPI = cyberApi.injectEndpoints({

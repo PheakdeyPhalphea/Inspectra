@@ -1,15 +1,10 @@
 import BenefitComponentCard from "@/components/BenefitComponentCard/BenefitComponentCard";
+import HomePageFAQComponent from "@/components/FAQsComponent/HomePageFAQComponent";
 import FeedbackCard from "@/components/FeedbackCardComponent/FeedbackCard";
 import HeroComponent from "@/components/HeroComponent/HeroComponent";
 import LogoSliderComponent from "@/components/LogoSliderComponent/LogoSliderComponent";
 import WorkingProcessCard from "@/components/WorkingProcessCard/WorkingProcessCard";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 export default function Home() {
@@ -38,10 +33,10 @@ export default function Home() {
                 Inspect, Improve, Innovative
               </p>
               <section className="my-10 md:w-[500px] flex justify-center items-center xl:justify-start">
-                <button className="flex justify-between items-center bg-primary_color px-5 text-text_color_light rounded-tl-[20px] rounded-br-[20px] w-[180px] h-[50px] text-text_body_16">
+                <Link href={"/project"} className="flex justify-between items-center bg-primary_color px-5 text-text_color_light rounded-tl-[20px] rounded-br-[20px] w-[180px] h-[50px] text-text_body_16">
                   Try Now
                   <FaArrowRight />
-                </button>
+                </Link>
               </section>
             </section>
           </section>
@@ -88,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* FAQs section */}
-      <section className="w-full text-center lg:my-[60px]">
+      <section className="w-full text-center my-[60px]">
         <Link href="/faq">
           {" "}
           <p className="text-text_header_34 px-2 inline rounded-tl-[20px] text-text_color_light rounded-br-[20px] bg-primary_color font-semibold">
@@ -96,40 +91,7 @@ export default function Home() {
           </p>{" "}
         </Link>
         <section>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-text_color_light dark:text-text_color_dark  text-left text-text_title_20">
-                Does Inspectra support containerized and cloud-native
-                environments?
-              </AccordionTrigger>
-              <AccordionContent className="text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
-                Inspectra is built with Docker for containerization and is
-                deployable in Kubernetes (K8s) environments if required. This
-                setup provides flexibility for scalable cloud-native deployment.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-text_color_light dark:text-text_color_dark  text-left text-text_title_20">
-                How does Inspectra perform white-box testing?
-              </AccordionTrigger>
-              <AccordionContent className="text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
-                Inspectra provides a white- box testing platform to review
-                source code and identify security weaknesses. Using SonarQube
-                and WASP Checker, Inspectra analyzes code structure and
-                vulnerabilities directly within your Git projects.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-text_color_light dark:text-text_color_dark  text-left text-text_title_20">
-                How does Inspectra handle automation and script-based workflows?
-              </AccordionTrigger>
-              <AccordionContent className="text-left text-text_body_16 text-text_color_desc_light dark:text-text_color_desc_dark">
-                Inspectra utilizes ShellScript and PowerShell for automating
-                scans and tasks, providing compatibility across both Linux and
-                Windows environments.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          <HomePageFAQComponent />
         </section>
       </section>
     </main>

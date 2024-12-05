@@ -1,3 +1,4 @@
+
 export const navbarData = [
   {
     name: "Home",
@@ -20,13 +21,9 @@ export const navbarData = [
     link: "/blog",
   },
   {
-    name: "Sign in",
-    link: "/login",
-  },
-  {
-    name: "Register",
-    link: "/signup",
-  },
+    name: "About Us",
+    link: "/aboutUs",
+  }
 ];
 
 export const navbarDataWithProfile = [

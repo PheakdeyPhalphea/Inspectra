@@ -1,7 +1,6 @@
 "use client";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navbarData, navbarDataWithProfile } from "@/data/navbar";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,6 +13,8 @@ import { SiMicrodotblog } from "react-icons/si";
 import { TbScan } from "react-icons/tb";
 import { IoLogOutSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import { IoSunny, IoMoon } from "react-icons/io5";
+
 import {
   Menubar,
   MenubarContent,
@@ -54,7 +55,13 @@ export default function NavbarComponent() {
       });
   };
 
-  const isRender = pathname === "/login" || pathname === "/register";
+  const isRender =
+    pathname === "/login" ||
+    pathname === "/signup" ||
+    pathname === "/forget-password" ||
+    pathname === "/newpassword" ||
+    pathname === "/newpassword" ||
+    pathname === "/verify";
 
   return (
     <nav className="w-full mx-auto z-40 backdrop-blur-2xl sticky top-0">
@@ -94,9 +101,9 @@ export default function NavbarComponent() {
                   className="flex items-center justify-center p-2 rounded-md transition-colors"
                 >
                   {theme === "dark" ? (
-                    <Sun className="h-5 w-5 text-text_color_dark" />
+                    <IoSunny className="h-5 w-5 text-text_color_dark" />
                   ) : (
-                    <Moon className="h-5 w-5 " />
+                    <IoMoon className="h-5 w-5 " />
                   )}
                 </button>
                 {/* Sign in button */}
@@ -208,6 +215,9 @@ export default function NavbarComponent() {
                               )}
                             </Link>
                           ))}
+                          <Link href="/login">
+                            <p>Sign in</p>
+                          </Link>
                         </ul>
                       </SheetContent>
                     </Sheet>
@@ -238,7 +248,7 @@ export default function NavbarComponent() {
                             </div>
                           </div>
                           <hr className="text-text_color_light" />
-                          {navbarDataWithProfile.map((item, index: number) => (
+                          {navbarData.map((item, index: number) => (
                             <Link key={index} href={item.link}>
                               {pathname === item.link ? (
                                 <p className="text-secondary_color">
@@ -249,7 +259,7 @@ export default function NavbarComponent() {
                               )}
                             </Link>
                           ))}
-                          {navbarData.map((item, index: number) => (
+                          {navbarDataWithProfile.map((item, index: number) => (
                             <Link key={index} href={item.link}>
                               {pathname === item.link ? (
                                 <p className="text-secondary_color">

@@ -8,10 +8,9 @@ import {
 } from "@/components/ui/accordion";
 import { FAQsType } from "@/types/FAQ";
 import { useGetAllFAQQuery } from "@/redux/service/faqs";
-export default function FAQsComponent() {
+export default function HomePageFAQComponent() {
   const getDataFAQ = useGetAllFAQQuery([]);
-  const result = getDataFAQ?.data;
-  console.log(result)
+  const result = getDataFAQ?.data?.data.slice(0, 3);
   return (
     <div>
       {result?.map((faqItem: FAQsType, index: number) => (

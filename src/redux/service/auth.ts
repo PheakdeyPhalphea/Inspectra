@@ -11,7 +11,16 @@ export const authApi = cyberApi.injectEndpoints({
         body: data,
       }),
     }),
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    register: builder.mutation<any, { user: object }>({
+      query: ({ user }) => ({
+        url: `auth/register`,
+        method: "POST",
+        body: user,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation } = authApi;

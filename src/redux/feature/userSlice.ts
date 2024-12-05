@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type userState = {
-  uuid: string;
+  email: string;
 };
 
 const initialState: userState = {
-  uuid: "",
+  email: "",
 };
 
 export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        setUserUUID(state, action: PayloadAction<string>) {
-            state.uuid = action.payload;
+        setUserEmail(state, action: PayloadAction<string>) {
+            state.email = action.payload;
         }
     }
 });
-export const { setUserUUID } = userSlice.actions;
+export const { setUserEmail } = userSlice.actions;
 export default userSlice.reducer;

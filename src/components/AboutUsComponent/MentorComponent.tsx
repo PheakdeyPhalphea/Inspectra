@@ -2,7 +2,10 @@
 
 import React from 'react'
 import { useTheme } from "next-themes";
+
 import { mentorData } from '@/data/mentor';
+import Link from 'next/link';
+import { AboutUs, SocialMedia } from '@/types/AboutUs';
 
 export default function MentorComponent() {
   const { theme } = useTheme();
@@ -33,7 +36,7 @@ export default function MentorComponent() {
           {/* mentors card */}
           <div>
             <div className="flex flex-wrap justify-center gap-10 md:gap-20">
-              {mentorData.map((mentor, index) => (
+              {mentorData.map((mentor: AboutUs, index) => (
                 <div
                   key={index}
                 >
@@ -53,8 +56,8 @@ export default function MentorComponent() {
 
                   {/* Social Media Links */}
                   <div className="flex justify-center space-x-4">
-                    {mentor.socialMedia.map((social, idx) => (
-                      <a
+                    {mentor.socialMedia.map((social: SocialMedia, idx) => (
+                      <Link
                         key={idx}
                         href={social.link}
                         target="_blank"
@@ -63,7 +66,7 @@ export default function MentorComponent() {
                         aria-label={`Link to ${mentor.name}'s ${social.platform}`}
                       >
                         <social.icon className="w-6 h-6 text-text_color_desc_dark hover:text-text_color_light dark:hover:text-primary_color transition-colors duration-200" />
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>

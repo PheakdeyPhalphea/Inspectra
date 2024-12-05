@@ -1,14 +1,14 @@
 "use client";
+import styles from "@/components/FromLoginComponent/styles.module.css";
+import { toast } from "@/components/hooks/use-toast";
 import { FormValues } from "@/types/FormType";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "@/components/hooks/use-toast";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import * as Yup from "yup";
 export default function FormLoginComponent() {
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const validationSchema = Yup.object({
@@ -46,7 +46,6 @@ export default function FormLoginComponent() {
         setIsLoading(false);
         const userUUID = data?.user?.data?.uuid;
         localStorage.setItem("userUUID", userUUID);
-
         router.push("/");
       } else {
         setIsLoading(false);
@@ -87,11 +86,17 @@ export default function FormLoginComponent() {
                 touched.email && errors.email ? "border-custom_red" : ""
               }`}
             />
-            <ErrorMessage
-              name="email"
-              component="div"
-              className={` mt-1 text-sm text-custom_red`}
-            />
+            {errors.email && touched.email && (
+              <div className="relative items-center justify-center flex top-[17px]	">
+                <div
+                  className={`absolute z-10 w-auto  ${styles.popoverContainer} ${styles.popoverAnimation}`}
+                >
+                  <p className={`text-text_body_16 ${styles.popoverText}`}>
+                    {errors.email}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           {/* Emial */}
 
@@ -116,7 +121,6 @@ export default function FormLoginComponent() {
                        : ""
                    }`}
               />
-
               {!showPassword ? (
                 <IoEyeOffSharp
                   onClick={() => handleShowPassword()}
@@ -130,11 +134,17 @@ export default function FormLoginComponent() {
               )}
             </div>
 
-            <ErrorMessage
-              name="password"
-              component="div"
-              className={` mt-1 text-sm text-custom_red`}
-            />
+            {errors.password && touched.password && (
+              <div className="relative items-center justify-center flex top-[17px]	">
+                <div
+                  className={`absolute z-10 w-auto  ${styles.popoverContainer} ${styles.popoverAnimation}`}
+                >
+                  <p className={`text-text_body_16 ${styles.popoverText}`}>
+                    {errors.password}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           {/* Forget Password */}
           <div className="text-end pb-5">
