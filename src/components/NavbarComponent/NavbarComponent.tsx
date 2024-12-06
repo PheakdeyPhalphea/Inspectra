@@ -92,7 +92,7 @@ export default function NavbarComponent() {
                 {/* Icon to change theme */}
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="flex items-center justify-center p-2 rounded-md transition-colors"
+                  className="flex items-center justify-center px-2 rounded-md transition-colors"
                 >
                   {theme === "dark" ? (
                     <IoSunny className="h-5 w-5 text-text_color_dark" />
@@ -119,6 +119,7 @@ export default function NavbarComponent() {
                             width={50}
                             height={50}
                             className="object-cover w-full h-full"
+                            onError={(e) => (e.currentTarget.src = '/images/default-profile.jpg')}
                           />
                         </div>
                       </MenubarTrigger>
@@ -131,7 +132,7 @@ export default function NavbarComponent() {
                         </p>
                         <hr className="my-5" />
                         {/* Profile */}
-                        <button className="p-3 my-3     flex w-full justify-between items-center text-center ">
+                        <button onClick={()=> router.push("/myProfile")} className="p-3 my-3 flex w-full justify-between items-center text-center ">
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
                               <FaUser className="w-full h-full text-text_title_20" />
@@ -144,7 +145,7 @@ export default function NavbarComponent() {
                         </button>
 
                         {/* Blog History */}
-                        <button className="p-3 my-3    flex w-full justify-between items-center text-center">
+                        <button onClick={()=> router.push("/blogHistory")} className="p-3 my-3    flex w-full justify-between items-center text-center">
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
                               <SiMicrodotblog className="w-full h-full text-text_title_20" />
@@ -159,7 +160,7 @@ export default function NavbarComponent() {
                         </button>
 
                         {/* Scan History */}
-                        <button className="p-3 my-3    flex w-full justify-between items-center text-center">
+                        <button onClick={()=> router.push("/scanHistory")} className="p-3 my-3 flex w-full justify-between items-center text-center">
                           <div className="flex items-center">
                             <div className="flex items-center justify-center w-6 h-6">
                               <TbScan className="w-full h-full text-text_title_20" />
@@ -226,10 +227,11 @@ export default function NavbarComponent() {
                             <div className=" w-[40px] h-[40px] overflow-hidden rounded-full">
                               <img
                                 src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${userData?.data?.profile}`}
-                                alt="Logo"
+                                alt="Profile"
                                 width={50}
                                 height={50}
                                 className="object-cover w-full h-full"
+                                onError={(e) => (e.currentTarget.src = '/images/default-profile.jpg')}
                               />
                             </div>
                             <div className="px-5">
