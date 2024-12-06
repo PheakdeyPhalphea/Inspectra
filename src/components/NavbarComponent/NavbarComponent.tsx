@@ -120,7 +120,7 @@ export default function NavbarComponent() {
                       <MenubarTrigger>
                         <div className="  w-[40px] h-[40px] overflow-hidden rounded-full">
                           <img
-                            src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${userData?.data?.profile}`}
+                            src={`${userData?.data?.profile}`}
                             alt="Logo"
                             width={50}
                             height={50}

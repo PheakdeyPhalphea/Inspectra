@@ -8,33 +8,31 @@ import { useTheme } from "next-themes";
 export default function FeedbackComponent() {
   const { theme } = useTheme();
   const { toast } = useToast();
-  const [createUserFeedback, { isSuccess, isError }] =
+  const [createUserFeedback] =
     useCreateUserFeedbackMutation();
 
   const initialValues: createFeedbackType = {
     message: "",
   };
 
-  const handleSubmit = (values: createFeedbackType) => {
+  const handleSubmit = async (values: createFeedbackType) => {
+
+    console.log(values);
     try {
-      if (isSuccess) {
-        createUserFeedback({ message: values });
+
+        const ressponse = await createUserFeedback({ message: values });
+        console.log(ressponse);
         toast({
           description: "Thank For FeedBack Our Team Will Review It",
           variant: "success",
         });
-      } else if (isError) {
-        toast({
-          description: "Failed to Submit Feedback",
-          variant: "error",
-        });
-      }
-    } catch (error) {
+      } catch (error) {
       toast({
         description: `${error}`,
       });
     }
-  };
+    }
+
   return (
     <section className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div className="p-14 flex flex-col gap-5 bg-text_color_dark dark:bg-card_color_dark rounded-xl">

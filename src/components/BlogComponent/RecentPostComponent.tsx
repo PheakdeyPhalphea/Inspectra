@@ -7,7 +7,9 @@ import { useGetAllBlogQuery } from '@/redux/service/blog';
 import { Blog } from '@/types/Blog';
 
 export default function RecentPostComponent() {
+
     const { data: blogData } = useGetAllBlogQuery({ page: 0, pageSize: 10 });
+
     const blogList = blogData?.content.slice(0, 4);
 
     return (
@@ -16,8 +18,8 @@ export default function RecentPostComponent() {
             <div className='py-3 flex flex-col gap-3'>
                 {blogList?.map((blog: Blog, index: number) => (
                     <div key={index} className='rounded-lg overflow-hidden flex'>
-                        <div className='w-[200px] h-[100px]'>
-                            <img className='w-full h-full object-cover' src={blog?.thumbnail[0]} alt="thumbnail" />
+                        <div className='w-[200px] h-[90px]'>
+                            <img className='w-full h-full' src={blog?.thumbnail[0]} alt="thumbnail" />
                         </div>
                         <div className='bg-text_color_dark dark:bg-card_color_dark p-2'>
                             <p className='line-clamp-2'>{blog.title}</p>

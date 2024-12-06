@@ -42,6 +42,25 @@
   background-clip: text;
 }
 
+/* Tailwind Configured Classes for Dialog */
+.dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.dialog-content {
+  background-color: white; /* Modal Background */
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 400px;
+  margin: auto;
+  z-index: 60;
+}
+
+
+
 @keyframes l24 {
   100% {
     background-position: left;
