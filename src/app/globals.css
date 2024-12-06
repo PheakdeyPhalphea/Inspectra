@@ -47,3 +47,9 @@
     background-position: left;
   }
 }
+
+.particles-canvas {
+  display: block; /* Ensure the canvas respects parent dimensions */
+  width: 100% !important;
+  height: 100% !important;
+}

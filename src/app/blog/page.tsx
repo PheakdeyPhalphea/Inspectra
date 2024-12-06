@@ -17,11 +17,13 @@ export default function page() {
     <div className='w-[90%] mx-auto my-[60px]'>
       <div className='flex justify-between'>
         <p className='text-text_title_24'>Blog Community</p>
-        <button className='px-3 py-2 bg-primary_color text-text_color_light flex gap-3 rounded-lg items-center'>
+        <button className='px-3 py-2 bg-primary_color text-text_color_light flex gap-3 rounded-xl items-center'>
           <FaPlus />
-          Create Blog
+          <p className='hidden md:block'>Create Blog</p>
         </button>
       </div>
+
+      {/* blog component */}
       <div className='flex justify-between gap-10 my-10'>
         <BlogComponent />
 

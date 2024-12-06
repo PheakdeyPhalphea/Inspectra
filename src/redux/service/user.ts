@@ -10,7 +10,16 @@ export const userAPI = cyberApi.injectEndpoints({
         providesTags: ["User"],
       }),
     }),
+    // update user profile
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    updateUserProfile: builder.mutation<any, {userProfile: object}>({
+      query: ({userProfile}) => ({
+        url: `users/profile`,
+        method: "PUT",
+        body: userProfile,
+      }),
+    }),
   }),
 });
 
-export const {  useGetUserDetailQuery } = userAPI;
+export const {  useGetUserDetailQuery, useUpdateUserProfileMutation } = userAPI;
