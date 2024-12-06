@@ -60,3 +60,4 @@ export default function DropdownMenu({ searchTerm, onMenuClick }: DropdownMenuPr
         </Accordion>
     )
 }
+

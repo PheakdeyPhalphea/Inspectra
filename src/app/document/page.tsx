@@ -7,7 +7,13 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { GoHomeFill } from "react-icons/go";
 import Image from "next/image";
 import imagePlaceholder from "../../../public/placeholder/placeholder.png";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Docuemnt - Inspectra",
+  description:
+    "Learn more about Inspectra, a white-box testing platform designed to review source code and identify security weaknesses. Discover our mission, values, and commitment to secure development.",
+};
 
 type Document = {
   uuid: string;
