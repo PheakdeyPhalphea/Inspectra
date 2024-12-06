@@ -1,3 +1,4 @@
 export type ProjectNameType = {
-    projectName: string
-}
+  projectName: string;
+  isUsed?: boolean;
+};

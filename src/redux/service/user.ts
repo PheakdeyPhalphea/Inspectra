@@ -7,6 +7,7 @@ export const userAPI = cyberApi.injectEndpoints({
     getUserDetail: builder.query<UserDetail, {uuid: string}>({
       query: ({uuid}) => ({
         url: `/users/${uuid}`,
+        providesTags: ["User"],
       }),
     }),
   }),

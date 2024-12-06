@@ -19,8 +19,24 @@ export const projectAPI = cyberApi.injectEndpoints({
         providesTags: ["Projects"],
       }),
     }),
+
+    // scan project
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    createProjectScan: builder.mutation<any, { project: object }>({
+      query: ({ project }) => ({
+        url: `scans/next`,
+        method: "POST",
+        body: project,
+      }),
+    }),
+
+
+    
   }),
 });
 
-export const { useCreateProjectNameMutation, useGetAllProjectsNameQuery } =
-  projectAPI;
+export const {
+  useCreateProjectNameMutation,
+  useGetAllProjectsNameQuery,
+  useCreateProjectScanMutation,
+} = projectAPI;

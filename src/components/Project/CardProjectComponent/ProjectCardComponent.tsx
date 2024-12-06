@@ -2,9 +2,14 @@ import React from "react";
 import { projectData } from "@/data/Project";
 import { FaCheck } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
+import { useRouter } from "next/navigation";
 export default function ProjectCardComponent() {
+  const router = useRouter();
   return (
-    <section className="w-full h-full md:h-[230px] p-5 border border-opacity-40 border-text_color_desc_light dark:border-primary_color rounded-[20px] ">
+    <section
+      onClick={() => router.push(`project/${projectData.projectName}`)}
+      className="w-full h-full md:h-[230px] p-5 border border-opacity-40 border-text_color_desc_light dark:border-primary_color rounded-[20px] "
+    >
       <div className="flex justify-between w-full">
         <p className="text-text_body_16 text-text_color_light dark:text-text_color_dark ">
           {projectData.projectName}
@@ -12,7 +17,7 @@ export default function ProjectCardComponent() {
         {projectData.projectResult === "Passed" ? (
           <div className="flex text-center items-center">
             <div className="w-[25px] h-[25px] flex items-center justify-center rounded-[5px] bg-primary_color">
-              <FaCheck className="dark:text-text_color_light"/>
+              <FaCheck className="dark:text-text_color_light" />
             </div>
             <p className=" px-2 text-text_body_16">
               {projectData.projectResult}
@@ -21,7 +26,7 @@ export default function ProjectCardComponent() {
         ) : (
           <div className="flex text-center items-center">
             <div className="w-[25px] h-[25px] flex items-center justify-center rounded-[5px] bg-custom_red">
-              <RxCross2 className="dark:text-text_color_light"/>
+              <RxCross2 className="dark:text-text_color_light" />
             </div>
             <p className=" px-2 text-text_body_16">
               {projectData.projectResult}
