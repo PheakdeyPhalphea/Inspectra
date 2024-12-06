@@ -57,7 +57,6 @@ export default function ProjectCardComponent() {
             Security
           </div>
         </div>
-
         {/* reliability */}
         <div className="w-full h-full">
           {/* score security */}
@@ -71,7 +70,6 @@ export default function ProjectCardComponent() {
             Reliability
           </div>
         </div>
-
         {/* Maintainability */}
         <div className="w-full h-full">
           {/* Maintainability */}
@@ -85,7 +83,6 @@ export default function ProjectCardComponent() {
             Maintainability
           </div>
         </div>
-
         {/* Hotspot Reviewed */}
         <div className="w-full h-full">
           {/* Hotspot Reviewed */}
@@ -98,8 +95,7 @@ export default function ProjectCardComponent() {
           <div className="my-5 w-full flex items-center text-center justify-center">
             Hotspot Reviewed
           </div>
-        </div>
-
+        </div>{" "}
         {/* duplicated */}
         <div className="w-full h-full">
           {/* duplicated */}
