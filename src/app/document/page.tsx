@@ -6,6 +6,7 @@ import { HiDocumentSearch } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { GoHomeFill } from "react-icons/go";
 import Image from "next/image";
+import imagePlaceholder from "../../../public/placeholder/placeholder.png";
 
 
 type Document = {
@@ -29,7 +30,6 @@ export default function Document() {
   const [breadcrumb, setBreadcrumb] = useState<(string | JSX.Element)[]>([<GoHomeFill key="home" />]);
   const [selectedCategory, setSelectedCategory] = useState<DocumentCategory | null>(null);
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null);
-  const imagePlaceholder = "http://136.228.158.126:4011/images/ef97c45c-3aa2-468c-8d14-7e9d5b702a0b.png";
   const [searchTerm, setSearchTerm] = useState("");
 
   // Function to update breadcrumb
@@ -44,7 +44,6 @@ export default function Document() {
       setSelectedDocument(null);
     }
   };
-
 
   // Handle breadcrumb clicks
   const handleBreadcrumbClick = (index: number) => {
@@ -75,11 +74,8 @@ export default function Document() {
           } lg:hidden`}
         onClick={() => setIsSidebarOpen(false)} // Close sidebar when clicking outside
       >
-        <div
-          className={`fixed top-0 left-0 w-3/5 max-w-xs bg-card_color_light h-full p-5 transition-transform duration-200 z-50 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
-          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-        >
+        <div className={`fixed top-0 left-0 w-3/5 max-w-xs bg-card_color_light h-full p-5 transition-transform duration-200 z-50 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+          onClick={(e) => e.stopPropagation()} >
           <div className="w-full max-w mx-auto mb-5">
             <div className="relative">
               <input
@@ -100,8 +96,7 @@ export default function Document() {
               if (document) {
                 setIsSidebarOpen(false);
               }
-            }}
-          />
+            }} searchTerm={""} />
         </div>
       </section>
 
@@ -125,7 +120,6 @@ export default function Document() {
         </div>
         <DropdownMenu searchTerm={searchTerm} onMenuClick={handleMenuClick} />
       </section>
-
 
       {/* Main Content */}
       <section
@@ -159,21 +153,17 @@ export default function Document() {
                 {selectedDocument.documentImages && selectedDocument.documentImages.length > 0 ? (
                   selectedDocument.documentImages.map((imageUrl, index) => (
                     <Image
+                      unoptimized
+                      height={100}
+                      width={100}
                       key={index}
-                      src={imageUrl}
+                      src={imageUrl ? imageUrl : imagePlaceholder}
                       alt={`${selectedDocument.title} Image ${index + 1}`}
                       className="w-full h-auto rounded shadow"
                       onError={(e) => (e.currentTarget.src = `${imagePlaceholder}`)}
                     />
                   ))
-                ) : (
-                  // Placeholder for missing images
-                  <Image
-                    src={imagePlaceholder}
-                    alt="No image available"
-                    className="w-full h-auto rounded shadow"
-                  />
-                )}
+                ) : null}
               </div>
             </div>
           ) : selectedCategory ? (
@@ -183,29 +173,26 @@ export default function Document() {
                 {selectedCategory.documents.map((doc) => (
                   <li key={doc.uuid} className="mt-1" >
                     <h2 className="text-2xl font-bold">
-                      <a href={`#document-${doc.uuid}`}>{doc.title}</a>
+                      {doc.title}
                     </h2>
                     <p className="mt-3 mb-3">{doc.description}</p>
+
                     {/* Render images if they exist or show a placeholder */}
                     <div className="w-[100%] mt-5 mb-5">
                       {doc.documentImages && doc.documentImages.length > 0 ? (
                         doc.documentImages.map((imageUrl, index) => (
-                          <Image
+                          <Image 
+                            unoptimized
+                            height={100}
+                            width={100}
                             key={index}
-                            src={imageUrl}
+                            src={imageUrl ? imageUrl : imagePlaceholder}
                             alt={`${doc.title} Image ${index + 1}`}
                             className="w-full h-auto rounded shadow"
                             onError={(e) => (e.currentTarget.src = `${imagePlaceholder}`)}
                           />
                         ))
-                      ) : (
-                        // Placeholder for missing images
-                        <Image
-                          src={imagePlaceholder}
-                          alt="No image available"
-                          className="w-full h-auto rounded shadow"
-                        />
-                      )}
+                      ) : null}
                     </div>
                   </li>
                 ))}
@@ -217,7 +204,8 @@ export default function Document() {
               <h2 className="text-lg lg:text-2xl font-bold">Welcome to Inspectra documents</h2>
               <p className="mt-3">Select a category or document to view its details.</p>
               <div className="w-[100%] mt-5 mb-5">
-                <Image
+                <Image height={100}
+                  width={100}
                   src={imagePlaceholder}
                   alt="Image"
                   className="w-full h-auto rounded shadow"
@@ -230,3 +218,5 @@ export default function Document() {
     </main>
   );
 }
+
+
