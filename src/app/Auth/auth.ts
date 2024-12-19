@@ -28,10 +28,11 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     async jwt({ token, account, profile }) {
       if (account && profile) {
         token.accessToken = account.access_token;// Dynamically add accessToken
-        token.username = profile.login;
+        token.username = profile.email || profile.name || "";
       }
       return token; // Always return the token
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async session({ session, token } : { session: CustomSession, token: any }) {
 
         // Attach the accessToken to the session object
