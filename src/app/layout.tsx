@@ -37,7 +37,7 @@ export default function RootLayout({
             <main className="mx-auto min-h-screen w-[90%] p-4">
             {children}
             </main>
-           
+            
             <FooterComponent />
           </ThemeProvider>
       </body>
